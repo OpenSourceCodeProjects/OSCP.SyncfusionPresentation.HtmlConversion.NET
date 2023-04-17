@@ -32,37 +32,14 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             {
                 foreach (ITextPart textPart in paragraph.TextParts)
                 {
-                    HtmlElement spanElement = this.AddElement<HtmlElement>("span");
-                    spanElement.Css("color", $"rgb({textPart.Font.Color.R},{textPart.Font.Color.G},{textPart.Font.Color.B})");
-                        
-                    if (textPart.Font.Bold == true) spanElement.Css("font-weight", "bold");
-                    if (textPart.Font.Italic == true) spanElement.Css("font-style", "italic");
-                    if (textPart.Font.Underline != TextUnderlineType.None)
-                    {
-                        spanElement
-                            .Css("text-decoration-line", "underline")
-                            .Css("text-decoration-color", $"rgb({textPart.UnderlineColor.R},{textPart.UnderlineColor.G},{textPart.UnderlineColor.B})")
-                            .Css("text-decoration-style",
-                                textPart.Font.Underline == TextUnderlineType.Wave
-                                    ? "wavy"
-                                    : (
-                                        textPart.Font.Underline == TextUnderlineType.Dash
-                                            ? "dashed"
-                                            : (
-                                                textPart.Font.Underline == TextUnderlineType.Dotted
-                                                    ? "dotted"
-                                                    : "solid"
-                                            )
-                                    )
-                            );
-                    }
-                    spanElement.Text(textPart.Text);
-                    spanElement.Update();
+                    TextPartElement textPartElement = this.AddElement<TextPartElement>(TextPartElement.ELEMENT_NAME);
+                    textPartElement.Load(textPart);
                 }
             }
             else
             {
-                this.Text("&nbsp;");
+                TextPartElement textPartElement = this.AddElement<TextPartElement>(TextPartElement.ELEMENT_NAME);
+                textPartElement.Empty();
             }
 
             this.Update();

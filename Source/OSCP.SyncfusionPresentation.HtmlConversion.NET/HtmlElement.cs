@@ -62,6 +62,13 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             return this;
         }
 
+        internal HtmlElement Attr(string name, string value)
+        {
+            this.GetAttribute(name).Value = value;
+
+            return this;
+        }
+
         internal HtmlElement Text(string text)
         {
             this.Node.InnerText = text;

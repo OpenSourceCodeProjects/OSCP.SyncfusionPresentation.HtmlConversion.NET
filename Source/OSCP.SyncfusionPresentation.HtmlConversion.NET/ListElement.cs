@@ -1,0 +1,70 @@
+﻿using Syncfusion.Presentation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
+
+namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
+{
+    internal abstract class ListElement : HtmlElement
+    {
+        internal IParagraph Paragraph { get; set; }
+        internal ShapeElement Parent { get; set; }
+        protected List<HtmlElement> ListItems { get; set; }
+
+        public ListElement(XmlNode node) : base(node)
+        {
+            this.ListItems = new List<HtmlElement>();
+        }
+
+        internal virtual ListElement Load(IParagraph paragraph)
+        {
+            this.Paragraph = paragraph;
+
+            this.Css("display", "table-cell")
+                .Css("font-family", $"'{paragraph.Font.FontName}'")
+                .Css("font-size", $"{paragraph.Font.FontSize}px")
+                .Css("vertical-align", this.Parent.Shape.TextBody.VerticalAlignment.ToString().ToLower())
+                .Css("text-align", paragraph.HorizontalAlignment.ToString().ToLower());
+
+            this.Update();
+
+            return this;
+        }
+
+        internal ListElement AddListItem(IParagraph paragraph)
+        {
+            HtmlElement listItemElement = this.AddElement<HtmlElement>("li");
+            this.ListItems.Add(listItemElement);
+
+            if (paragraph.TextParts.Count > 0)
+            {
+                foreach (ITextPart textPart in paragraph.TextParts)
+                {
+                    TextPartElement textPartElement = listItemElement.AddElement<TextPartElement>(TextPartElement.ELEMENT_NAME);
+                    textPartElement.Load(textPart);
+                }
+            }
+            else
+            {
+                TextPartElement textPartElement = listItemElement.AddElement<TextPartElement>(TextPartElement.ELEMENT_NAME);
+                textPartElement.Empty();
+            }
+
+            return this;
+        }
+
+        internal T AddListToListItem<T>(int listItemIndex = -1)
+        {
+            HtmlElement listItemElement = this.ListItems[listItemIndex > -1 ? listItemIndex : (this.ListItems.Count - 1)];
+
+            string tag = typeof(T) == typeof(UnorderedListElement) ? "ul" : "ol";
+
+            T listElement = listItemElement.AddElement<T>(tag);
+
+            return listElement;
+        }
+    }
+}

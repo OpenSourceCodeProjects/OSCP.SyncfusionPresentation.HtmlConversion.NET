@@ -23,8 +23,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         {
             this.Slide = slide;
 
-            this.Css("border", "1px solid black")
-                .Css("position", "relative")
+            this.Css("position", "relative")
                 .Css("height", $"{slide.SlideSize.Height}px")
                 .Css("width", $"{slide.SlideSize.Width}px");
 
