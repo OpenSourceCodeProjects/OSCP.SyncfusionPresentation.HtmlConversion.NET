@@ -1,0 +1,16 @@
+# Packages
+packages/
+
+# Compiled
+bin/
+obj/
+
+.vs/
+
+*.vspscc
+
+# Console Application for Testing
+OSCP.SyncfusionPresentation.HtmlConversion.NET.Console/
+
+# Solution File
+OSCP.SyncfusionPresentation.HtmlConversion.NET.sln
