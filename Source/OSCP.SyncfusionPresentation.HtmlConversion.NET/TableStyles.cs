@@ -1132,9 +1132,501 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
                     BandedRows = true,
                     BandedColumns = false
                 }
-            }
+            },
 
             #endregion Accent 4 (Yellow)
+
+
+            #region Accent 5 (Light Blue)
+
+            // Themed Style
+            {
+                BuiltInTableStyle.ThemedStyle1Accent5, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 91, 155, 213),
+                    FillColor = Color.FromArgb(0, 137, 180, 224),
+                    BandedFillColor = Color.FromArgb(0, 163, 193, 229),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.ThemedStyle2Accent5, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 91, 155, 213),
+                    FillColor = Color.FromArgb(0, 137, 180, 224),
+                    BandedFillColor = Color.FromArgb(0, 88, 156, 219),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 255, 219, 155), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 255, 219, 155), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 219, 155), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 255, 219, 155), Width = 1, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+
+            // Light Style
+            {
+                BuiltInTableStyle.LightStyle1Accent5, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(1, 255, 255, 255),
+                    FillColor = Color.FromArgb(204, 91, 155, 213),
+                    BandedFillColor = Color.FromArgb(1, 255, 255, 255),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.LightStyle2Accent5, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 91, 155, 213),
+                    FillColor = Color.FromArgb(1, 255, 255, 255),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = false,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.LightStyle3Accent5, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(1, 255, 255, 255),
+                    FillColor = Color.FromArgb(204, 91, 155, 213),
+                    BandedFillColor = Color.FromArgb(1, 255, 255, 255),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+
+            // Medium Style
+            {
+                BuiltInTableStyle.MediumStyle1Accent5, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 91, 155, 213),
+                    FillColor = Color.FromArgb(0, 234, 239, 247),
+                    BandedFillColor = Color.FromArgb(0, 255, 255, 255),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.MediumStyle2Accent5, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 91, 155, 213),
+                    FillColor = Color.FromArgb(0, 210, 222, 239),
+                    BandedFillColor = Color.FromArgb(0, 234, 239, 247),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.MediumStyle3Accent5, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 91, 155, 213),
+                    FillColor = Color.FromArgb(0, 231, 231, 231),
+                    BandedFillColor = Color.FromArgb(0, 255, 255, 255),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 0, 0, 0), Width = 2, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 0, 0, 0), Width = 2, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 0, 0, 0), Width = 2, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.MediumStyle4Accent5, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 234, 239, 247),
+                    FillColor = Color.FromArgb(0, 210, 222, 239),
+                    BandedFillColor = Color.FromArgb(0, 234, 239, 247),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 91, 155, 213), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+
+            // Dark Style
+            {
+                BuiltInTableStyle.DarkStyle1Accent5, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 0, 0, 0),
+                    FillColor = Color.FromArgb(0, 71, 123, 169),
+                    BandedFillColor = Color.FromArgb(0, 91, 155, 213),
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+
+            #endregion Accent 5 (Light Blue)
+
+
+            #region Accent 6 (Green)
+
+            // Themed Style
+            {
+                BuiltInTableStyle.ThemedStyle1Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 112, 173, 71),
+                    FillColor = Color.FromArgb(0, 150, 194, 123),
+                    BandedFillColor = Color.FromArgb(0, 170, 206, 153),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.ThemedStyle2Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 122, 182, 85),
+                    FillColor = Color.FromArgb(0, 145, 195, 113),
+                    BandedFillColor = Color.FromArgb(0, 112, 173, 71),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+
+            // Light Style
+            {
+                BuiltInTableStyle.LightStyle1Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(1, 255, 255, 255),
+                    FillColor = Color.FromArgb(204, 112, 173, 71),
+                    BandedFillColor = Color.FromArgb(1, 255, 255, 255),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.LightStyle2Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 112, 173, 71),
+                    FillColor = Color.FromArgb(1, 255, 255, 255),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = false,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.LightStyle3Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(1, 255, 255, 255),
+                    FillColor = Color.FromArgb(204, 112, 173, 71),
+                    BandedFillColor = Color.FromArgb(1, 255, 255, 255),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+
+            // Medium Style
+            {
+                BuiltInTableStyle.MediumStyle1Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 112, 173, 71),
+                    FillColor = Color.FromArgb(0, 235, 241, 233),
+                    BandedFillColor = Color.FromArgb(0, 255, 255, 255),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.MediumStyle2Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 112, 173, 71),
+                    FillColor = Color.FromArgb(0, 213, 227, 207),
+                    BandedFillColor = Color.FromArgb(0, 235, 241, 233),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.MediumStyle3Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 112, 173, 71),
+                    FillColor = Color.FromArgb(0, 231, 231, 231),
+                    BandedFillColor = Color.FromArgb(0, 255, 255, 255),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 0, 0, 0), Width = 2, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 0, 0, 0), Width = 2, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 0, 0, 0), Width = 2, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.MediumStyle4Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 235, 241, 233),
+                    FillColor = Color.FromArgb(0, 213, 227, 207),
+                    BandedFillColor = Color.FromArgb(0, 235, 241, 233),
+                    TableBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Left = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    RowBorder = new TableBorderStyle
+                    {
+                        Top = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single },
+                        Right = new TableLineStyle { Color = Color.FromArgb(0, 112, 173, 71), Width = 1, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+
+            // Dark Style
+            {
+                BuiltInTableStyle.DarkStyle1Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 0, 0, 0),
+                    FillColor = Color.FromArgb(0, 88, 137, 55),
+                    BandedFillColor = Color.FromArgb(0, 112, 173, 71),
+                    HeaderBorder = new TableBorderStyle
+                    {
+                        Bottom = new TableLineStyle { Color = Color.FromArgb(0, 255, 255, 255), Width = 2, Style = LineStyle.Single }
+                    },
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+
+            #endregion Accent 6 (Green)
+
+
+            #region Dark Style Two Tone
+
+            {
+                BuiltInTableStyle.DarkStyle2Accent1Accent2, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 237, 125, 49),
+                    FillColor = Color.FromArgb(0, 207, 213, 234),
+                    BandedFillColor = Color.FromArgb(0, 233, 235, 245),
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.DarkStyle2Accent3Accent4, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 255, 192, 0),
+                    FillColor = Color.FromArgb(0, 225, 225, 225),
+                    BandedFillColor = Color.FromArgb(0, 240, 240, 240),
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            },
+            {
+                BuiltInTableStyle.DarkStyle2Accent5Accent6, new TableStyle
+                {
+                    HeadingFillColor = Color.FromArgb(0, 112, 173, 71),
+                    FillColor = Color.FromArgb(0, 210, 222, 239),
+                    BandedFillColor = Color.FromArgb(0, 234, 239, 247),
+                    BandedRows = true,
+                    BandedColumns = false
+                }
+            }
+
+            #endregion Dark Style Two Tone
         };
     }
 }

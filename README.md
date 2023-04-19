@@ -59,7 +59,7 @@ PowerPoint Features Supported
 | Last Column | :large_blue_diamond: | :large_blue_diamond: |
 | Shading | :large_blue_diamond: | :large_blue_diamond: |
 | Borders | :ballot_box_with_check: | :large_blue_diamond: |
-| Built-in Styles | :large_blue_diamond: | :large_blue_diamond: |
+| Built-in Styles | :ballot_box_with_check: | :large_blue_diamond: |
 | Effects | :white_circle: | :white_circle: |
 | **Charts** | :white_circle: | :white_circle: |
 | **Master Slides** | :large_blue_diamond: | N/A |
