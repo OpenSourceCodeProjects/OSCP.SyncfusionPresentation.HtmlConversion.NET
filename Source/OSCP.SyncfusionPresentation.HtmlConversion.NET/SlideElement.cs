@@ -89,6 +89,12 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
                         }
                     }
                 }
+                else if (slide.Background.Fill.FillType == FillType.Solid) 
+                {
+                    //IColor color = slide.Background.Fill.SolidFill.Color;
+                    //this.Css("background-color", $"rgba({color.R},{color.G},{color.B},{(color.A == 0 ? "1" : "0." + (100F - ((color.A / 255F) * 100F)))})");
+                    this.Css("background-color", slide.Background.Fill.SolidFill.Color.SystemColor.ToCss());
+                }
             }
         }
     }

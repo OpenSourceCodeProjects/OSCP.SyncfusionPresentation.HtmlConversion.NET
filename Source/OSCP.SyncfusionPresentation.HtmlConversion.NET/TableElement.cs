@@ -1,4 +1,5 @@
-﻿using Syncfusion.Presentation;
+﻿using Syncfusion.Drawing;
+using Syncfusion.Presentation;
 using System.Collections.Generic;
 using System.Xml;
 
@@ -55,16 +56,16 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             TableStyles.List.TryGetValue(table.BuiltInStyle, out tableStyle);
 
             // Apply borders to the table.
-            if (tableStyle.TableBorder.Top.Width > 0) this.Css($"border-top", tableStyle.TableBorder.Top.Css);
-            if (tableStyle.TableBorder.Right.Width > 0) this.Css($"border-right", tableStyle.TableBorder.Right.Css);
-            if (tableStyle.TableBorder.Bottom.Width > 0) this.Css($"border-bottom", tableStyle.TableBorder.Bottom.Css);
-            if (tableStyle.TableBorder.Left.Width > 0) this.Css($"border-left", tableStyle.TableBorder.Left.Css);
+            if (tableStyle.TableBorder.Top.Width > 0) this.Css($"border-top", tableStyle.TableBorder.Top.ToCss());
+            if (tableStyle.TableBorder.Right.Width > 0) this.Css($"border-right", tableStyle.TableBorder.Right.ToCss());
+            if (tableStyle.TableBorder.Bottom.Width > 0) this.Css($"border-bottom", tableStyle.TableBorder.Bottom.ToCss());
+            if (tableStyle.TableBorder.Left.Width > 0) this.Css($"border-left", tableStyle.TableBorder.Left.ToCss());
 
             IRow row = null;
             ICell cell = null;
             bool isAlternateRow = false;
             bool isAlternateCell = false;
-            ElementColor fillColor;
+            Color fillColor;
             string cellElementName;
 
             // Loop over the rows in the table.
@@ -111,11 +112,11 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
                     // Apply a background color to the cell.
                     if (cell.Fill.FillType == FillType.Automatic)
                     {
-                        cellElement.Css("background-color", fillColor.Css);
+                        cellElement.Css("background-color", fillColor.ToCss());
                     }
                     else if (cell.Fill.FillType == FillType.Solid)
                     {
-                        cellElement.Css("background-color", $"rgba({cell.Fill.SolidFill.Color.R},{cell.Fill.SolidFill.Color.G},{cell.Fill.SolidFill.Color.B},{(cell.Fill.SolidFill.Color.A == 1 ? "1" : "0." + cell.Fill.SolidFill.Color.A)})");
+                        cellElement.Css("background-color", cell.Fill.SolidFill.Color.SystemColor.ToCss());
                     }
 
                     // Not the heading row.
@@ -162,11 +163,11 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             if (cellBorder.Weight > 0)
             {
                 string lineStyle = "solid";
-                cellElement.Css($"border-{borderPosition}", $"{cellBorder.Weight}px {lineStyle} rgba({cellBorder.Fill.SolidFill.Color.R},{cellBorder.Fill.SolidFill.Color.G},{cellBorder.Fill.SolidFill.Color.B},{(cellBorder.Fill.SolidFill.Color.A == 0 ? "1" : "0." + cellBorder.Fill.SolidFill.Color.A)})");
+                cellElement.Css($"border-{borderPosition}", $"{cellBorder.Weight}px {lineStyle} {cellBorder.Fill.SolidFill.Color.SystemColor.ToCss()}");
             }
             else if (defaultBorder.Width > 0)
             {
-                cellElement.Css($"border-{borderPosition}", defaultBorder.Css);
+                cellElement.Css($"border-{borderPosition}", defaultBorder.ToCss());
             }
         }
     }

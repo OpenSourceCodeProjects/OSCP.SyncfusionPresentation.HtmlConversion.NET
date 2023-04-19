@@ -21,6 +21,7 @@ PowerPoint Features Supported
 |---------|:------------------:|:------------------:|
 | **Slide** |
 | Background Image | :ballot_box_with_check: | :large_blue_diamond: |
+| Background Solid Color | :ballot_box_with_check: | :large_blue_diamond: |
 | **Paragraph** |
 | Bold | :ballot_box_with_check: | :large_blue_diamond: |
 | Italic | :ballot_box_with_check: | :large_blue_diamond: |
