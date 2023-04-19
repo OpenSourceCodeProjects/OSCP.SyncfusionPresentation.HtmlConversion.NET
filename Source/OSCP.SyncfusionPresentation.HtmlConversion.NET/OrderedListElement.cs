@@ -10,6 +10,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
 {
     internal class OrderedListElement : ListElement
     {
+        internal const string ELEMENT_NAME = "ol";
+
         public OrderedListElement(XmlNode node) : base(node)
         {
             this.AddClass("pptx-ordered-list");

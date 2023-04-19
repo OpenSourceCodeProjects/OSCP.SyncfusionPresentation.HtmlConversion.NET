@@ -22,7 +22,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
 
         internal TextPartElement Empty()
         {
-            this.Text("&nbsp;");
+            this.Html("&nbsp;");
 
             return this;
         }
@@ -36,14 +36,16 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             // This is a superscript.
             if (textPart.Font.Superscript == true)
             {
-                htmlElement = this.AddElement<HtmlElement>("sup");
+                htmlElement = this.AppendElement<HtmlElement>("sup");
             }
             else if (textPart.Font.Subscript == true) 
             {
-                htmlElement = this.AddElement<HtmlElement>("sub");
+                htmlElement = this.AppendElement<HtmlElement>("sub");
             }
 
-            htmlElement.Css("color", $"rgb({textPart.Font.Color.R},{textPart.Font.Color.G},{textPart.Font.Color.B})");
+            htmlElement.Css("color", $"rgb({textPart.Font.Color.R},{textPart.Font.Color.G},{textPart.Font.Color.B})")
+                .Css("font-family", $"'{textPart.Font.FontName}'")
+                .Css("font-size", $"{textPart.Font.FontSize}px");
 
             if (textPart.Font.Bold == true) htmlElement.Css("font-weight", "bold");
             if (textPart.Font.Italic == true) htmlElement.Css("font-style", "italic");

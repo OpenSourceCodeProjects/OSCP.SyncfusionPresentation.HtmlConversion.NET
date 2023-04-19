@@ -20,13 +20,13 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             this.DocumentElement = this.AddElement("div");
             this.DocumentElement.AddClass("pptx-document").Update();
 
-            this.SlidesElement = this.DocumentElement.AddElement<HtmlElement>("div");
+            this.SlidesElement = this.DocumentElement.AppendElement<HtmlElement>("div");
             this.SlidesElement.AddClass("pptx-slides").Update();
         }
 
         internal SlideElement AddSlide()
         {
-            SlideElement slideElement = this.SlidesElement.AddElement<SlideElement>("div");
+            SlideElement slideElement = this.SlidesElement.AppendElement<SlideElement>(SlideElement.ELEMENT_NAME);
             slideElement.Parent = this.SlidesElement;
             return slideElement;
         }

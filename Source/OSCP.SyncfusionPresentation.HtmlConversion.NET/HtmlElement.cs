@@ -29,11 +29,21 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             this.Styles = new List<KeyValuePair<string, string>>();
         }
 
-        internal T AddElement<T>(string name)
+        internal T AppendElement<T>(string name)
         {
             XmlNode node = this.Node.OwnerDocument.CreateElement(name);
             (node as XmlElement).IsEmpty = false;
             this.Node.AppendChild(node);
+            T htmlElement = (T)Activator.CreateInstance(typeof(T), new object[] { node });
+
+            return htmlElement;
+        }
+
+        internal T PrependElement<T>(string name)
+        {
+            XmlNode node = this.Node.OwnerDocument.CreateElement(name);
+            (node as XmlElement).IsEmpty = false;
+            this.Node.PrependChild(node);
             T htmlElement = (T)Activator.CreateInstance(typeof(T), new object[] { node });
 
             return htmlElement;
@@ -72,6 +82,13 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         internal HtmlElement Text(string text)
         {
             this.Node.InnerText = text;
+
+            return this;
+        }
+
+        internal HtmlElement Html(string html)
+        {
+            this.Node.InnerXml = html;
 
             return this;
         }

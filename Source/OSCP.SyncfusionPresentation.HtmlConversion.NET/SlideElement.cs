@@ -11,6 +11,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
 {
     public class SlideElement : HtmlElement
     {
+        internal const string ELEMENT_NAME = "div";
+
         internal HtmlElement Parent { get; set; }
         internal ISlide Slide { get; set; }
 
@@ -33,12 +35,24 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             // Loop over all the shapes in the slide.
             foreach (IShape shape in slide.Shapes)
             {
-                // Create a shape element.
-                ShapeElement shapeElement = this.AddElement<ShapeElement>("div");
-                shapeElement.Parent = this;
+                if (shape.SlideItemType == SlideItemType.Placeholder)
+                {
+                    // Create a shape element.
+                    ShapeElement shapeElement = this.AppendElement<ShapeElement>(ShapeElement.ELEMENT_NAME);
+                    shapeElement.Parent = this;
 
-                // Load the shape element from the Syncfusion shape.
-                shapeElement.Load(shape);
+                    // Load the shape element from the Syncfusion shape.
+                    shapeElement.Load(shape);
+                }
+                else if (shape.SlideItemType == SlideItemType.Table)
+                {
+                    // Create a table element.
+                    TableElement tableElement = this.AppendElement<TableElement>(TableElement.ELEMENT_NAME);
+                    tableElement.Parent = this;
+
+                    // Load the table element from the Syncfusion table.
+                    tableElement.Load(shape as ITable);
+                }
             }
 
             // Update the underlying XmlNode with the styles and classes.

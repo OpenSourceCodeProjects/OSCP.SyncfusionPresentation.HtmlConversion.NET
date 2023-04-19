@@ -10,6 +10,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
 {
     internal class UnorderedListElement : ListElement
     {
+        internal const string ELEMENT_NAME = "ul";
+
         // http://www.alanwood.net/demos/wingdings.html
         private static readonly Dictionary<int, string> WINDINGS_DEC_TO_UNICODE_HEX = new Dictionary<int, string>()
         {

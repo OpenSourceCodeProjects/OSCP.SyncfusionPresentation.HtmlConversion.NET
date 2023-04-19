@@ -10,6 +10,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
 {
     public class ShapeElement : HtmlElement
     {
+        internal const string ELEMENT_NAME = "div";
+
         internal IShape Shape { get; set; }
         internal SlideElement Parent { get; set; }
 
@@ -38,11 +40,11 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
                 if (paragraph.ListFormat.Type == ListType.None)
                 {
                     // Create a paragraph element.
-                    ParagraphElement paragraphElement = this.AddElement<ParagraphElement>("p");
+                    ParagraphElement paragraphElement = this.AppendElement<ParagraphElement>(ParagraphElement.ELEMENT_NAME);
                     paragraphElement.Parent = this;
 
                     // Load the paragraph element from the Syncfusion paragraph.
-                    paragraphElement.Load(paragraph);
+                    paragraphElement.Load(paragraph, shape.TextBody);
                 }
                 // Paragraph is a bullet list.
                 else if (paragraph.ListFormat.Type == ListType.Bulleted)
@@ -56,7 +58,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
                         if (paragraph.IndentLevelNumber == 0)
                         {
                             // Create an unordered list element at the root of the shape element.
-                            unorderedListElement = this.AddElement<UnorderedListElement>("ul");
+                            unorderedListElement = this.AppendElement<UnorderedListElement>(UnorderedListElement.ELEMENT_NAME);
                         }
                         // The list is a "child" list.
                         else
@@ -93,7 +95,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
                         if (paragraph.IndentLevelNumber == 0)
                         {
                             // Create an ordered list element at the root of the shape element.
-                            orderedListElement = this.AddElement<OrderedListElement>("ol");
+                            orderedListElement = this.AppendElement<OrderedListElement>(OrderedListElement.ELEMENT_NAME);
                         }
                         // The list is a "child" list.
                         else

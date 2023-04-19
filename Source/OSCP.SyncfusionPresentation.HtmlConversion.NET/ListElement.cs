@@ -36,20 +36,20 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
 
         internal ListElement AddListItem(IParagraph paragraph)
         {
-            HtmlElement listItemElement = this.AddElement<HtmlElement>("li");
+            HtmlElement listItemElement = this.AppendElement<HtmlElement>("li");
             this.ListItems.Add(listItemElement);
 
             if (paragraph.TextParts.Count > 0)
             {
                 foreach (ITextPart textPart in paragraph.TextParts)
                 {
-                    TextPartElement textPartElement = listItemElement.AddElement<TextPartElement>(TextPartElement.ELEMENT_NAME);
+                    TextPartElement textPartElement = listItemElement.AppendElement<TextPartElement>(TextPartElement.ELEMENT_NAME);
                     textPartElement.Load(textPart);
                 }
             }
             else
             {
-                TextPartElement textPartElement = listItemElement.AddElement<TextPartElement>(TextPartElement.ELEMENT_NAME);
+                TextPartElement textPartElement = listItemElement.AppendElement<TextPartElement>(TextPartElement.ELEMENT_NAME);
                 textPartElement.Empty();
             }
 
@@ -60,9 +60,11 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         {
             HtmlElement listItemElement = this.ListItems[listItemIndex > -1 ? listItemIndex : (this.ListItems.Count - 1)];
 
-            string tag = typeof(T) == typeof(UnorderedListElement) ? "ul" : "ol";
+            string tag = typeof(T) == typeof(UnorderedListElement) 
+                ? UnorderedListElement.ELEMENT_NAME 
+                : OrderedListElement.ELEMENT_NAME;
 
-            T listElement = listItemElement.AddElement<T>(tag);
+            T listElement = listItemElement.AppendElement<T>(tag);
 
             return listElement;
         }

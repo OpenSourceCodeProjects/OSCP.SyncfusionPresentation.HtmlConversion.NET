@@ -69,6 +69,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ElementColor.cs" />
     <Compile Include="HtmlDocument.cs" />
     <Compile Include="HtmlElement.cs" />
     <Compile Include="ListElement.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="ShapeElement.cs" />
     <Compile Include="SlideElement.cs" />
     <Compile Include="OrderedListElement.cs" />
+    <Compile Include="TableElement.cs" />
+    <Compile Include="TableStyles.cs" />
     <Compile Include="TextPartElement.cs" />
     <Compile Include="UnorderedListElement.cs" />
   </ItemGroup>
