@@ -29,6 +29,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             // Get the slides.
             XmlNodeList slides = this.XmlDocument.SelectNodes("//div[contains(@class, 'pptx-slides')]/div[contains(@class, 'pptx-slide')]");
 
+            // Loop over all the slides in the document.
             foreach (XmlNode slideNode in slides) 
             {
                 SlidePart slidePart = this.AddSlide();
@@ -38,8 +39,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 
         internal SlidePart AddSlide()
         {
-            SlidePart slidePart = new SlidePart();
-            slidePart.Parent = this.PresentationDocument;
+            SlidePart slidePart = new SlidePart(this);
             return slidePart;
         }
     }

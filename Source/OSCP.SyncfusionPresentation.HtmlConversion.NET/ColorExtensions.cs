@@ -23,8 +23,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         {
             ColorObject colorObject = null;
 
+            // Try rgba
             Match rgbaMatch = Regex.Match(styleValue, @"rgba\((\d{1,3}),\s?(\d{1,3}),\s?(\d{1,3}),\s?(\d?.?\d{1,2}?)\)");
-
             if (rgbaMatch.Success == true && rgbaMatch.Groups.Count == 5)
             {
                 float a = float.Parse(rgbaMatch.Groups[4].Value);
@@ -38,6 +38,19 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
                     int.Parse(rgbaMatch.Groups[2].Value),
                     int.Parse(rgbaMatch.Groups[3].Value)
                 ) as ColorObject;
+            }
+            else
+            {
+                // Try rgb.
+                Match rgbMatch = Regex.Match(styleValue, @"rgb\((\d{1,3}),\s?(\d{1,3}),\s?(\d{1,3})\)");
+                if (rgbMatch.Success == true && rgbMatch.Groups.Count == 4)
+                {
+                    colorObject = ColorObject.FromArgb(
+                        int.Parse(rgbMatch.Groups[1].Value),
+                        int.Parse(rgbMatch.Groups[2].Value),
+                        int.Parse(rgbMatch.Groups[3].Value)
+                    ) as ColorObject;
+                }
             }
 
             return colorObject;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
@@ -18,6 +19,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             {
                 this._xmlNode = value;
 
+                this._css = new Dictionary<string, string>();
+
                 if (this._xmlNode.Attributes["style"] != null)
                 {
                     string styleAttribute = this._xmlNode.Attributes["style"].Value;
@@ -36,7 +39,6 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
                         }
                     }
 
-                    this._css = new Dictionary<string, string>();
                     foreach (string style in styles)
                     {
                         if ((colonIndex = style.IndexOf(':')) > -1)
@@ -53,6 +55,29 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             string styleValue;
             this._css.TryGetValue(styleName, out styleValue);
             return styleValue == null ? string.Empty : styleValue;
+        }
+
+        protected bool TryGetCssValue(string styleName, out double styleValue)
+        {
+            bool found = false;
+
+            styleValue = 0F;
+
+            string css = this.Css(styleName);
+
+            if (css.Length > 0)
+            {
+                try
+                {
+                    styleValue = double.Parse(Regex.Match(css, @"[\.0-9]*").Value);
+                    found = true;
+                }
+                catch
+                {
+                }
+            }
+
+            return found;
         }
     }
 }

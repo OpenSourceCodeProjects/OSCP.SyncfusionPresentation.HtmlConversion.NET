@@ -1,5 +1,5 @@
 # OSCP.SyncfusionPresentation.HtmlConversion.NET
-Convert PowerPoint Presentations to/from HTML using the Syncfusion.Presentation.NET library. The initial release is planned for July 2023.
+Convert PowerPoint Presentations to/from HTML using the Syncfusion.Presentation.NET library. The initial release is planned for 4 June 2023.
 
 Example
 ---
@@ -18,7 +18,7 @@ System.IO.File.WriteAllText(htmlFilePath, html);
 
 **Convert HTML to PowerPoint**
 ```csharp
-html = System.IO.File.ReadAllText(htmlFilePath);
+string html = System.IO.File.ReadAllText(htmlFilePath);
 HtmlToPresentationConverter htmlToPresentationConverter = new HtmlToPresentationConverter();
 presentation = htmlToPresentationConverter.Convert(html);
 presentation.Save(pptxFilePath);
@@ -45,11 +45,10 @@ PowerPoint Features Supported
 | Superscript | :ballot_box_with_check: | :large_blue_diamond: |
 | All Caps | :ballot_box_with_check: | :large_blue_diamond: |
 | Small Caps | :ballot_box_with_check: | :large_blue_diamond: |
-| Highlight | :large_blue_diamond: | :large_blue_diamond: |
+| Highlight | :ballot_box_with_check: | :large_blue_diamond: |
 | Font | :ballot_box_with_check: | :large_blue_diamond: |
 | Font Size | :ballot_box_with_check: | :large_blue_diamond: |
 | Font Color | :ballot_box_with_check: | :large_blue_diamond: |
-| Small Caps | :ballot_box_with_check: | :large_blue_diamond: |
 | **Ordered List** |
 | 1. 2. 3. | :ballot_box_with_check: | :large_blue_diamond: |
 | 1) 2) 3) | :x: | :x: |
