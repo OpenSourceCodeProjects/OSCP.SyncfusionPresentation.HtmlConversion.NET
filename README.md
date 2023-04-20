@@ -10,9 +10,19 @@ using OSCP.SyncfusionPresentation.HtmlConversion.NET;
 
 **Convert PowerPoint to HTML**
 ```csharp
-IPresentation presentation = Presentation.Open(filepath);
+IPresentation presentation = Presentation.Open(pptxFilePath);
 PresentationToHtmlConverter converter = new PresentationToHtmlConverter();
 string html = converter.Convert(presentation);
+System.IO.File.WriteAllText(htmlFilePath, html);
+```
+
+**Convert HTML to PowerPoint**
+```csharp
+html = System.IO.File.ReadAllText(htmlFilePath);
+HtmlToPresentationConverter htmlToPresentationConverter = new HtmlToPresentationConverter();
+presentation = htmlToPresentationConverter.Convert(html);
+presentation.Save(pptxFilePath);
+presentation.Close();
 ```
 
 PowerPoint Features Supported
@@ -20,8 +30,10 @@ PowerPoint Features Supported
 | Feature | PowerPoint to HTML | HTML to PowerPoint |
 |---------|:------------------:|:------------------:|
 | **Slide** |
-| Background Image | :ballot_box_with_check: | :large_blue_diamond: |
-| Background Solid Color | :ballot_box_with_check: | :large_blue_diamond: |
+| Background Image | :ballot_box_with_check: | :ballot_box_with_check: |
+| Background Solid Color | :ballot_box_with_check: | :ballot_box_with_check: |
+| Background Pattern | :large_blue_diamond: | :large_blue_diamond: |
+| Background Gradient | :large_blue_diamond: | :large_blue_diamond: |
 | **Paragraph** |
 | Bold | :ballot_box_with_check: | :large_blue_diamond: |
 | Italic | :ballot_box_with_check: | :large_blue_diamond: |

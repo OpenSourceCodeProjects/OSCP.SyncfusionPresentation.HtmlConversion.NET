@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
+namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 {
-    public class ParagraphElement : HtmlElement
+    internal class ParagraphElement : HtmlElement
     {
         internal const string ELEMENT_NAME = "p";
 

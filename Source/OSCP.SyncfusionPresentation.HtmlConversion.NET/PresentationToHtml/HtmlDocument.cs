@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Syncfusion.Presentation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
+namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 {
     internal class HtmlDocument
     {
@@ -22,6 +23,16 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
 
             this.SlidesElement = this.DocumentElement.AppendElement<HtmlElement>("div");
             this.SlidesElement.AddClass("pptx-slides").Update();
+        }
+
+        internal void Load(IPresentation presentation)
+        {
+            // Loop over all the slides.
+            foreach (ISlide slide in presentation.Slides)
+            {
+                SlideElement slideElement = this.AddSlide();
+                slideElement.Load(slide);
+            }
         }
 
         internal SlideElement AddSlide()

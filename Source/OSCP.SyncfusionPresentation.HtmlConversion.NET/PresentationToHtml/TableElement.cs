@@ -3,7 +3,7 @@ using Syncfusion.Presentation;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
+namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 {
     internal class TableElement : HtmlElement
     {
