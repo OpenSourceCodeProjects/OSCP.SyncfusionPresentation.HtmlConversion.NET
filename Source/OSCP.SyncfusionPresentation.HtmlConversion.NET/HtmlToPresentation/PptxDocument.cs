@@ -9,38 +9,52 @@ using System.Xml;
 
 namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 {
+    /// <summary>
+    /// Convert a HTML to a Syncfusion.Presentaton.IPresentation object.
+    /// </summary>
     internal class PptxDocument
     {
-        public IPresentation PresentationDocument { get; private set; }
+        /// <summary>
+        /// Syncfusion.Presentaton.IPresentation object that is created.
+        /// </summary>
+        public IPresentation IPresentation { get; private set; }
 
+        /// <summary>
+        /// XmlDocument that represents the HTML presentation document.
+        /// </summary>
         private XmlDocument XmlDocument { get; set; }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         internal PptxDocument()
         {
             this.XmlDocument = new XmlDocument();
         }
 
+        /// <summary>
+        /// Load the HTML presentation document.
+        /// </summary>
+        /// <param name="html">HTML that contains the presentation document.</param>
         internal void Load(string html)
         {
+            // Load the HTML into the XmlDocument.
             this.XmlDocument.LoadXml(html);
 
-            this.PresentationDocument = Presentation.Create();
+            // Create an instance of a Syncfusion.Presentaton.IPresentation.
+            this.IPresentation = Presentation.Create();
 
-            // Get the slides.
+            // Locate the XmlNodes that are an HTMLDivElement with the pptx-slide class.
+            // Each HTMLDivElement is an HTML presentation slide.
             XmlNodeList slides = this.XmlDocument.SelectNodes("//div[contains(@class, 'pptx-slides')]/div[contains(@class, 'pptx-slide')]");
 
             // Loop over all the slides in the document.
             foreach (XmlNode slideNode in slides) 
             {
-                SlidePart slidePart = this.AddSlide();
+                // Create and load a slide.
+                SlidePart slidePart = new SlidePart(this);
                 slidePart.Load(slideNode);
             }
-        }
-
-        internal SlidePart AddSlide()
-        {
-            SlidePart slidePart = new SlidePart(this);
-            return slidePart;
         }
     }
 }

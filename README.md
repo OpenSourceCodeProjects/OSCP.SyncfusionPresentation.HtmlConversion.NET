@@ -1,5 +1,7 @@
 # OSCP.SyncfusionPresentation.HtmlConversion.NET
-Convert PowerPoint Presentations to/from HTML using the Syncfusion.Presentation.NET library. The initial release is planned for 4 June 2023.
+Convert PowerPoint Presentations to/from HTML using the Syncfusion.Presentation.NET library. 
+
+**The initial release is planned for 4 June 2023.**
 
 Example
 ---
@@ -35,20 +37,20 @@ PowerPoint Features Supported
 | Background Pattern | :large_blue_diamond: | :large_blue_diamond: |
 | Background Gradient | :large_blue_diamond: | :large_blue_diamond: |
 | **Paragraph** |
-| Bold | :ballot_box_with_check: | :large_blue_diamond: |
-| Italic | :ballot_box_with_check: | :large_blue_diamond: |
-| Underline | :ballot_box_with_check: | :large_blue_diamond: |
+| Bold | :ballot_box_with_check: | :ballot_box_with_check: |
+| Italic | :ballot_box_with_check: | :ballot_box_with_check: |
+| Underline | :ballot_box_with_check: | :ballot_box_with_check: |
 | Text Shadow | :x: | :x: |
-| Strikethrough | :ballot_box_with_check: | :large_blue_diamond: |
-| Double Strikethrough | :ballot_box_with_check: | :large_blue_diamond: |
-| Subscript | :ballot_box_with_check: | :large_blue_diamond: |
-| Superscript | :ballot_box_with_check: | :large_blue_diamond: |
-| All Caps | :ballot_box_with_check: | :large_blue_diamond: |
-| Small Caps | :ballot_box_with_check: | :large_blue_diamond: |
-| Highlight | :ballot_box_with_check: | :large_blue_diamond: |
-| Font | :ballot_box_with_check: | :large_blue_diamond: |
-| Font Size | :ballot_box_with_check: | :large_blue_diamond: |
-| Font Color | :ballot_box_with_check: | :large_blue_diamond: |
+| Strikethrough | :ballot_box_with_check: | :ballot_box_with_check: |
+| Double Strikethrough | :ballot_box_with_check: | :ballot_box_with_check: |
+| Subscript | :ballot_box_with_check: | :ballot_box_with_check: |
+| Superscript | :ballot_box_with_check: | :ballot_box_with_check: |
+| All Caps | :ballot_box_with_check: | :ballot_box_with_check: |
+| Small Caps | :ballot_box_with_check: | :ballot_box_with_check: |
+| Highlight | :ballot_box_with_check: | :ballot_box_with_check: |
+| Font | :ballot_box_with_check: | :ballot_box_with_check: |
+| Font Size | :ballot_box_with_check: | :ballot_box_with_check: |
+| Font Color | :ballot_box_with_check: | :ballot_box_with_check: |
 | **Ordered List** |
 | 1. 2. 3. | :ballot_box_with_check: | :large_blue_diamond: |
 | 1) 2) 3) | :x: | :x: |
@@ -71,7 +73,7 @@ PowerPoint Features Supported
 | Shading | :large_blue_diamond: | :large_blue_diamond: |
 | Borders | :ballot_box_with_check: | :large_blue_diamond: |
 | Built-in Styles | :ballot_box_with_check: | :large_blue_diamond: |
-| Effects | :white_circle: | :white_circle: |
+| **Effects** | :white_circle: | :white_circle: |
 | **Charts** | :white_circle: | :white_circle: |
 | **Master Slides** | :large_blue_diamond: | N/A |
 | **Transitions** | :x: | :x: |

@@ -31,6 +31,14 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             this.Top = double.Parse(Regex.Match(this.Css("top"), @"[\.0-9]*").Value);
             this.Width = double.Parse(Regex.Match(this.Css("width"), @"[\.0-9]*").Value);
             this.Height = double.Parse(Regex.Match(this.Css("height"), @"[\.0-9]*").Value);
+
+            if (shapeNode.FirstChild.Name == "p")
+            {
+                //this.IShape = this.SlidePart.ISlide.Shapes.AddShape(AutoShapeType.Rectangle, 100, 100, 100, 100);
+                this.IShape = this.SlidePart.ISlide.AddTextBox(this.Left, this.Top, this.Width, this.Height);
+                ParagraphPart paragraphPart = new ParagraphPart(this);
+                paragraphPart.Load(shapeNode.FirstChild);
+            }
         }
     }
 }
