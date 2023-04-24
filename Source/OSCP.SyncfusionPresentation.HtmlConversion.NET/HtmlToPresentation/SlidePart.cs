@@ -57,6 +57,17 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
                 ShapePart shapePart = new ShapePart(this);
                 shapePart.Load(shapeNode);
             }
+
+            // Get the tables.
+            XmlNodeList tables = this.Node.SelectNodes("table[contains(@class, 'pptx-table')]");
+
+            // Loop over all the tables in the slode.
+            foreach (XmlNode tableNode in tables)
+            {
+                // Create and load a table.
+                TablePart tablePart = new TablePart(this);
+                tablePart.Load(tableNode);
+            }
         }
 
         /// <summary>

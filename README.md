@@ -60,11 +60,11 @@ PowerPoint Features Supported
 | a. b. c. | :ballot_box_with_check: | :large_blue_diamond: |
 | a) b) c) | :white_circle: | :white_circle: |
 | **Unordered List** |
-| Default Bulleted List Options | :ballot_box_with_check: | :large_blue_diamond: |
+| Default Bulleted List Options | :ballot_box_with_check: | :ballot_box_with_check: |
 | Custom Bulleted List Symbols | :white_circle: | :white_circle: |
 | **Pictures** | :large_blue_diamond: | :large_blue_diamond: |
 | **Tables** | | |
-| Header Row | :ballot_box_with_check: | :large_blue_diamond: |
+| Header Row | :ballot_box_with_check: | :ballot_box_with_check: |
 | Banded Rows | :ballot_box_with_check: | :large_blue_diamond: |
 | Total Row | :large_blue_diamond: | :large_blue_diamond: |
 | Banded Columns | :ballot_box_with_check: | :large_blue_diamond: |
@@ -72,10 +72,10 @@ PowerPoint Features Supported
 | Last Column | :large_blue_diamond: | :large_blue_diamond: |
 | Shading | :large_blue_diamond: | :large_blue_diamond: |
 | Borders | :ballot_box_with_check: | :large_blue_diamond: |
-| Built-in Styles | :ballot_box_with_check: | :large_blue_diamond: |
+| Built-in Styles | :ballot_box_with_check: | :ballot_box_with_check: |
 | **Effects** | :white_circle: | :white_circle: |
 | **Charts** | :white_circle: | :white_circle: |
-| **Master Slides** | :large_blue_diamond: | N/A |
+| **Master Slides** | :large_blue_diamond: | :x: |
 | **Transitions** | :x: | :x: |
 | **Animations** | :x: | :x: |
 | **Drawing** | :x: | :x: |

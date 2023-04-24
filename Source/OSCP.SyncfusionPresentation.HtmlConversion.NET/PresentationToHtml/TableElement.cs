@@ -75,7 +75,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                 isAlternateRow = (rdx % 2) == 0;
 
                 HtmlElement rowElement = null;
-                
+
                 if (rdx == 0 && table.HasHeaderRow == true)
                 {
                     this.THead = this.PrependElement<HtmlElement>("thead");
@@ -150,6 +150,16 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                     // Update the cell element attributes.
                     cellElement.Update();
                 }
+            }
+
+
+            // Add the colgroup for the table.
+            HtmlElement colGroupElement = this.PrependElement<HtmlElement>("colgroup");
+
+            // Add col elements to the colgroup.
+            for (int col = 0; col < table.ColumnsCount; col++)
+            {
+                colGroupElement.AppendElement<HtmlElement>("col");
             }
 
             // Update the table element attributes.

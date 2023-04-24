@@ -16,9 +16,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
         internal event AddChildNodeDelegate AddChildNode;
 
         /// <summary>
-        /// Parent ShapePart object.
+        /// Parent ITextBodyPart object.
         /// </summary>
-        internal ShapePart ShapePart { get; set; }
+        internal ITextBodyPart TextBodyPart { get; set; }
 
         /// <summary>
         /// Syncfusion.Presentaton.IParagraph object that is created.
@@ -29,9 +29,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
         /// Constructor.
         /// </summary>
         /// <param name="shapePart">Parent ShapePart object.</param>
-        internal ParagraphPart(ShapePart shapePart)
+        internal ParagraphPart(ITextBodyPart textBodyPart)
         {
-            this.ShapePart = shapePart;
+            this.TextBodyPart = textBodyPart;
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             string styleValue = string.Empty;
 
             // Create the Syncfusion.Presentaton.IParagraph object.
-            this.IParagraph = this.ShapePart.IShape.TextBody.AddParagraph();
+            this.IParagraph = this.TextBodyPart.ITextBody.AddParagraph();
 
             // Apply font family and size.
             this.IParagraph.Font.FontName = this.Css("font-family");
@@ -55,9 +55,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             // Apply vertical alignment.
             if ((styleValue = this.Css("vertical-align")).Length > 0)
             {
-                if (styleValue == "top") this.ShapePart.IShape.TextBody.VerticalAlignment = VerticalAlignmentType.Top;
-                else if (styleValue == "middle") this.ShapePart.IShape.TextBody.VerticalAlignment = VerticalAlignmentType.Middle;
-                else if (styleValue == "bottom") this.ShapePart.IShape.TextBody.VerticalAlignment = VerticalAlignmentType.Bottom;
+                if (styleValue == "top") this.TextBodyPart.ITextBody.VerticalAlignment = VerticalAlignmentType.Top;
+                else if (styleValue == "middle") this.TextBodyPart.ITextBody.VerticalAlignment = VerticalAlignmentType.Middle;
+                else if (styleValue == "bottom") this.TextBodyPart.ITextBody.VerticalAlignment = VerticalAlignmentType.Bottom;
             }
 
             // Apply horizontal alignment.
@@ -67,15 +67,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
                 else if (styleValue == "center") this.IParagraph.HorizontalAlignment = HorizontalAlignmentType.Center;
                 else if (styleValue == "right") this.IParagraph.HorizontalAlignment = HorizontalAlignmentType.Right;
             }
-        //}
 
-        ///// <summary>
-        ///// Load the content for the paragraph. The default behavior assumes the
-        ///// Syncfusion.Presentation.IParagraph.ListFormat.Type == ListType.None.
-        ///// Override to load content for other ListType formats.
-        ///// </summary>
-        //internal virtual void LoadContent()
-        //{
             // Loop over the span elements within the paragraph.
             foreach (XmlNode childNode in this.Node.ChildNodes)
             {

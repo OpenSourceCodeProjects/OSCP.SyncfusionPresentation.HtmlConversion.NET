@@ -9,8 +9,19 @@ using System.Xml;
 
 namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 {
-    internal class ShapePart : PartObject
+    internal class ShapePart : PartObject, ITextBodyPart
     {
+        /// <summary>
+        /// Get the ITextBody object.
+        /// </summary>
+        public ITextBody ITextBody 
+        { 
+            get
+            {
+                return this.IShape.TextBody;
+            }
+        }
+
         internal SlidePart SlidePart { set; get; }
         internal IShape IShape { get; set; }
         internal double Left { get; private set; }

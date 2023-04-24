@@ -77,6 +77,9 @@
     <Compile Include="HtmlToPresentation\OrderedListPart.cs" />
     <Compile Include="HtmlToPresentation\ParagraphPart.cs" />
     <Compile Include="HtmlToPresentation\ShapePart.cs" />
+    <Compile Include="HtmlToPresentation\TableCellPart.cs" />
+    <Compile Include="HtmlToPresentation\TablePart.cs" />
+    <Compile Include="HtmlToPresentation\ITextBodyPart.cs" />
     <Compile Include="HtmlToPresentation\TextPart.cs" />
     <Compile Include="HtmlToPresentation\UnorderedListPart.cs" />
     <Compile Include="PresentationToHtml\HtmlDocument.cs" />
