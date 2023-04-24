@@ -13,6 +13,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
     /// </summary>
     internal class ParagraphPart : PartObject
     {
+        internal event AddChildNodeDelegate AddChildNode;
+
         /// <summary>
         /// Parent ShapePart object.
         /// </summary>
@@ -65,13 +67,29 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
                 else if (styleValue == "center") this.IParagraph.HorizontalAlignment = HorizontalAlignmentType.Center;
                 else if (styleValue == "right") this.IParagraph.HorizontalAlignment = HorizontalAlignmentType.Right;
             }
+        //}
 
+        ///// <summary>
+        ///// Load the content for the paragraph. The default behavior assumes the
+        ///// Syncfusion.Presentation.IParagraph.ListFormat.Type == ListType.None.
+        ///// Override to load content for other ListType formats.
+        ///// </summary>
+        //internal virtual void LoadContent()
+        //{
             // Loop over the span elements within the paragraph.
-            foreach (XmlNode spanNode in paragraphNode.ChildNodes)
+            foreach (XmlNode childNode in this.Node.ChildNodes)
             {
-                // Create and load a text part.
-                TextPart textPart = new TextPart(this);
-                textPart.Load(spanNode);
+                if (childNode.Name == "span")
+                {
+                    // Create and load a text part.
+                    TextPart textPart = new TextPart(this);
+                    textPart.Load(childNode);
+                }
+
+                if (this.AddChildNode != null)
+                {
+                    this.AddChildNode(new AddChildNodeArgs { XmlNode = childNode });
+                }
             }
         }
     }

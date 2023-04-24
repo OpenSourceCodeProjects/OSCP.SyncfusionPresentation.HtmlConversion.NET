@@ -32,12 +32,44 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             this.Width = double.Parse(Regex.Match(this.Css("width"), @"[\.0-9]*").Value);
             this.Height = double.Parse(Regex.Match(this.Css("height"), @"[\.0-9]*").Value);
 
-            if (shapeNode.FirstChild.Name == "p")
+            // Loop over all the child elements in the shape node.
+            foreach (XmlNode childNode in shapeNode.ChildNodes)
             {
-                //this.IShape = this.SlidePart.ISlide.Shapes.AddShape(AutoShapeType.Rectangle, 100, 100, 100, 100);
+                // Child element is a paragraph.
+                if (childNode.Name == "p")
+                {
+                    this.InitIShapeAsTextBox();
+
+                    // Add a paragraph.
+                    ParagraphPart paragraphPart = new ParagraphPart(this);
+                    // Load the paragraph.
+                    paragraphPart.Load(childNode);
+                }
+                // Child element is an unordered list.
+                else if (childNode.Name == "ul")
+                {
+
+                }
+                // Child element is an ordered list.
+                else if (childNode.Name == "ol")
+                {
+                    this.InitIShapeAsTextBox();
+
+                    // Add an ordered list.
+                    OrderedListPart orderedListPart = new OrderedListPart(this);
+                    // Load the ordered list.
+                    orderedListPart.Load(childNode, 1);
+                }
+            }
+        }
+
+        private void InitIShapeAsTextBox()
+        {
+            // The Syncfusion.Presentation.IShape has not been created yet.
+            if (this.IShape == null)
+            {
+                // Create an instance of the Syncfusion.Presentation.IShape as a text box.
                 this.IShape = this.SlidePart.ISlide.AddTextBox(this.Left, this.Top, this.Width, this.Height);
-                ParagraphPart paragraphPart = new ParagraphPart(this);
-                paragraphPart.Load(shapeNode.FirstChild);
             }
         }
     }

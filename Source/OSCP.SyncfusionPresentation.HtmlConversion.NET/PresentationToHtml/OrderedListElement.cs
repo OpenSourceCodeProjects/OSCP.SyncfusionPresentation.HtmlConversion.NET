@@ -23,9 +23,11 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
             
             switch (paragraph.ListFormat.NumberStyle)
             {
+                case NumberedListStyle.AlphaUcParenRight:
                 case NumberedListStyle.AlphaUcPeriod:
                     listStyleType = "upper-alpha";
                     break;
+                case NumberedListStyle.AlphaLcParenRight:
                 case NumberedListStyle.AlphaLcPeriod:
                     listStyleType = "lower-alpha";
                     break;

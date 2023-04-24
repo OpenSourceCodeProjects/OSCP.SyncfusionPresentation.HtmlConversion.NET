@@ -71,6 +71,9 @@
   <ItemGroup>
     <Compile Include="HtmlToPresentationConverter.cs" />
     <Compile Include="ColorExtensions.cs" />
+    <Compile Include="HtmlToPresentation\AddChildNodeArgs.cs" />
+    <Compile Include="HtmlToPresentation\ListPart.cs" />
+    <Compile Include="HtmlToPresentation\OrderedListPart.cs" />
     <Compile Include="HtmlToPresentation\ParagraphPart.cs" />
     <Compile Include="HtmlToPresentation\ShapePart.cs" />
     <Compile Include="HtmlToPresentation\TextPart.cs" />
