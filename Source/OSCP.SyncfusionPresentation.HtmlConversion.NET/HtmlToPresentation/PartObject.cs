@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Xml;
 
@@ -90,6 +91,18 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             }
 
             return css;
+        }
+
+        internal string Attr(string name)
+        {
+            string value = string.Empty;
+            XmlAttribute attribute;
+
+            if ((attribute = this.Node.Attributes[name]) != null)
+            {
+                value = attribute.Value;
+            }
+            return value;
         }
     }
 }

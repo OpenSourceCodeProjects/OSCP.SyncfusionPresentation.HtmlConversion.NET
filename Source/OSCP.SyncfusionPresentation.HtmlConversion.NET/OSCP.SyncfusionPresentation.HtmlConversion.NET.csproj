@@ -69,6 +69,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BulletCharacterConversion.cs" />
     <Compile Include="HtmlToPresentationConverter.cs" />
     <Compile Include="ColorExtensions.cs" />
     <Compile Include="HtmlToPresentation\AddChildNodeArgs.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="HtmlToPresentation\ParagraphPart.cs" />
     <Compile Include="HtmlToPresentation\ShapePart.cs" />
     <Compile Include="HtmlToPresentation\TextPart.cs" />
+    <Compile Include="HtmlToPresentation\UnorderedListPart.cs" />
     <Compile Include="PresentationToHtml\HtmlDocument.cs" />
     <Compile Include="PresentationToHtml\HtmlElement.cs" />
     <Compile Include="PresentationToHtml\ListElement.cs" />

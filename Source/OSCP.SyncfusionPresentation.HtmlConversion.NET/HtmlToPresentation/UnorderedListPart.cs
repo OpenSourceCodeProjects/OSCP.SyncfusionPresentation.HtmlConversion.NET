@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 {
-    internal class OrderedListPart : ListPart
+    internal class UnorderedListPart : ListPart
     {
         internal int IndentLevel { get; set; }
 
@@ -16,29 +16,33 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
         /// Constructor.
         /// </summary>
         /// <param name="shapePart">Parent ShapePart object.</param>
-        internal OrderedListPart(ShapePart shapePart) : base(shapePart)
+        internal UnorderedListPart(ShapePart shapePart) : base(shapePart)
         {
         }
 
         /// <summary>
-        /// Load the ordered list content.
+        /// Load the unordered list content.
         /// </summary>
-        /// <param name="orderedListNode">XmlNode that represents the HTMLOListElement.</param>
-        internal void Load(XmlNode orderedListNode, int indentLevel)
+        /// <param name="unorderedListNode">XmlNode that represents the HTMLUListElement.</param>
+        internal void Load(XmlNode unorderedListNode, int indentLevel)
         {
-            this.Node = orderedListNode;
+            this.Node = unorderedListNode;
             this.IndentLevel = indentLevel;
 
             ParagraphPart paragraphPart = null;
 
+            string fontName = this.Attr("data-font");
+            string listStyleType = this.Css("list-style-type");
+
             // Loop over the child items in the list.
-            foreach (XmlNode xmlNode in orderedListNode.ChildNodes)
+            foreach (XmlNode xmlNode in unorderedListNode.ChildNodes)
             {
                 paragraphPart = new ParagraphPart(this.ShapePart);
                 paragraphPart.AddChildNode += this.OnAddChildNode;
                 paragraphPart.Load(xmlNode);
-                paragraphPart.IParagraph.ListFormat.Type = ListType.Numbered;
-                paragraphPart.IParagraph.ListFormat.NumberStyle = this.GetNumberedListStyle();
+                paragraphPart.IParagraph.ListFormat.Type = ListType.Bulleted;
+                paragraphPart.IParagraph.ListFormat.BulletCharacter = BulletCharacterConversion.ListStyleTypeToBulletCharacter(fontName, listStyleType);
+                paragraphPart.IParagraph.ListFormat.FontName = fontName;
                 paragraphPart.IParagraph.IndentLevelNumber = indentLevel;
             }
         }
@@ -55,31 +59,6 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
                 UnorderedListPart unorderedListPart = new UnorderedListPart(this.ShapePart);
                 unorderedListPart.Load(e.XmlNode, this.IndentLevel + 1);
             }
-        }
-
-        private NumberedListStyle GetNumberedListStyle()
-        {
-            NumberedListStyle numberedListStyle = NumberedListStyle.ArabicPeriod;
-
-            string listStyleType = this.Css("list-style-type");
-
-            switch (listStyleType)
-            {
-                case "upper-alpha":
-                    numberedListStyle = NumberedListStyle.AlphaUcPeriod;
-                    break;
-                case "lower-alpha":
-                    numberedListStyle = NumberedListStyle.AlphaLcPeriod;
-                    break;
-                case "upper-roman":
-                    numberedListStyle = NumberedListStyle.RomanUcPeriod;
-                    break;
-                case "lower-roman":
-                    numberedListStyle = NumberedListStyle.RomanLcPeriod;
-                    break;
-            }
-
-            return numberedListStyle;
         }
     }
 }

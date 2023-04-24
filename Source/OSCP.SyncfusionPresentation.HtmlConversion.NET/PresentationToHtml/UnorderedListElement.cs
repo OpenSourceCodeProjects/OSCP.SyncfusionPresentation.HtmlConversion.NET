@@ -12,16 +12,6 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
     {
         internal const string ELEMENT_NAME = "ul";
 
-        // http://www.alanwood.net/demos/wingdings.html
-        private static readonly Dictionary<int, string> WINDINGS_DEC_TO_UNICODE_HEX = new Dictionary<int, string>()
-        {
-            { 113, "\"\\2751\"" },  // boxshadowdwn
-            { 118, "\"\\2756\"" },  // xrhombus
-            { 167, "square" },      // square4
-            { 216, "\"\\2B9A\"" },  // head2right
-            { 252, "\"\\2714\"" }   // checkbld
-        };
-
         public UnorderedListElement(XmlNode node) : base(node)
         {
             this.AddClass("pptx-unordered-list");
@@ -29,32 +19,39 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         internal override ListElement Load(IParagraph paragraph)
         {
-            string listStyleType = string.Empty;
+            //string listStyleType = string.Empty;
 
-            switch (paragraph.ListFormat.BulletCharacter)
-            {
-                case '•':
-                    listStyleType = "disc";
-                    break;
-                case 'o':
-                    listStyleType = "circle";
-                    break;
-                default:
-                    if (paragraph.ListFormat.FontName == "Wingdings")
-                    {
-                        WINDINGS_DEC_TO_UNICODE_HEX.TryGetValue(Convert.ToInt32(paragraph.ListFormat.BulletCharacter), out listStyleType);
-                    }
-                    if (listStyleType == null || listStyleType.Length == 0)
-                    {
-                        listStyleType = $"\"{paragraph.ListFormat.BulletCharacter}\"";
-                    }
+            //switch (paragraph.ListFormat.BulletCharacter)
+            //{
+            //    case '•':
+            //        listStyleType = "disc";
+            //        break;
+            //    case 'o':
+            //        listStyleType = "circle";
+            //        break;
+            //    default:
+            //        if (paragraph.ListFormat.FontName == "Wingdings")
+            //        {
+            //            WINDINGS_DEC_TO_UNICODE_HEX.TryGetValue(Convert.ToInt32(paragraph.ListFormat.BulletCharacter), out listStyleType);
+            //        }
+            //        if (listStyleType == null || listStyleType.Length == 0)
+            //        {
+            //            listStyleType = $"\"{paragraph.ListFormat.BulletCharacter}\"";
+            //        }
 
-                    this.Attr("data-font", paragraph.ListFormat.FontName);
+            //        this.Attr("data-font", paragraph.ListFormat.FontName);
 
-                    break;
-            }
+            //        break;
+            //}
 
-            this.Css("list-style-type", listStyleType);
+            //this.Css("list-style-type", listStyleType);
+
+            this.Attr("data-font", paragraph.ListFormat.FontName);
+            this.Css("list-style-type",
+                BulletCharacterConversion.BulletCharacterToListStyleType(
+                    paragraph.ListFormat.FontName,
+                    paragraph.ListFormat.BulletCharacter)
+            );
 
             return base.Load(paragraph);
         }

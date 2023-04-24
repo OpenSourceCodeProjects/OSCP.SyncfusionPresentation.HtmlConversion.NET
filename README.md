@@ -53,14 +53,14 @@ PowerPoint Features Supported
 | Font Color | :ballot_box_with_check: | :ballot_box_with_check: |
 | **Ordered List** |
 | 1. 2. 3. | :ballot_box_with_check: | :large_blue_diamond: |
-| 1) 2) 3) | :x: | :x: |
+| 1) 2) 3) | :white_circle: | :white_circle: |
 | I. II. III. | :ballot_box_with_check: | :large_blue_diamond: |
 | i. ii. iii. | :ballot_box_with_check: | :large_blue_diamond: |
 | A. B. C. | :ballot_box_with_check: | :large_blue_diamond: |
 | a. b. c. | :ballot_box_with_check: | :large_blue_diamond: |
-| a) b) c) | :x: | :x: |
+| a) b) c) | :white_circle: | :white_circle: |
 | **Unordered List** |
-| Defaul Bulleted List Options | :ballot_box_with_check: | :large_blue_diamond: |
+| Default Bulleted List Options | :ballot_box_with_check: | :large_blue_diamond: |
 | Custom Bulleted List Symbols | :white_circle: | :white_circle: |
 | **Pictures** | :large_blue_diamond: | :large_blue_diamond: |
 | **Tables** | | |

@@ -48,7 +48,12 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
                 // Child element is an unordered list.
                 else if (childNode.Name == "ul")
                 {
+                    this.InitIShapeAsTextBox();
 
+                    // Add an unordered list.
+                    UnorderedListPart unorderedListPart = new UnorderedListPart(this);
+                    // Load the unordered list.
+                    unorderedListPart.Load(childNode, 1);
                 }
                 // Child element is an ordered list.
                 else if (childNode.Name == "ol")
