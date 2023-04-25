@@ -10,8 +10,6 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 {
     internal class UnorderedListPart : ListPart
     {
-        internal int IndentLevel { get; set; }
-
         /// <summary>
         /// Constructor.
         /// </summary>

@@ -42,12 +42,14 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 
             this.ITable.HasHeaderRow = headerRow != null;
 
-            // Get the built-in table style.
+            // Get the built-in table style if one is defined for this table.
             string builtinStyleAttributeValue = this.Attr("data-builtin-style");
+
+            BuiltInTableStyle builtInTableStyle = BuiltInTableStyle.None;
+
+            // A built-in table style is defined for this table.
             if (builtinStyleAttributeValue.Length > 0)
             {
-                BuiltInTableStyle builtInTableStyle;
-
                 // The enumeration for the built-in table style was found.
                 if (Enum.TryParse(builtinStyleAttributeValue, out builtInTableStyle) == true)
                 {
@@ -75,11 +77,11 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             {
                 XmlNodeList tableCells = tableRows[rdx].SelectNodes("td");
 
-                // Populate the table row.
+                // Populate the table cells for the current row.
                 for (cdx = 0; cdx < tableCells.Count; cdx++)
                 {
                     TableCellPart tableCellPart = new TableCellPart(this);
-                    tableCellPart.Load(tableCells[cdx], rdx + 1, cdx);
+                    tableCellPart.Load(tableCells[cdx], rdx + (this.ITable.HasHeaderRow == true ? 1 : 0), cdx);
                 }
             }
         }

@@ -7,8 +7,13 @@ using System.Xml;
 
 namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 {
+    /// <summary>
+    /// Base class for the OrderedListPart and UnorderedListPart.
+    /// </summary>
     internal class ListPart : PartObject
     {
+        internal int IndentLevel { get; set; }
+
         /// <summary>
         /// Parent ShapePart object.
         /// </summary>

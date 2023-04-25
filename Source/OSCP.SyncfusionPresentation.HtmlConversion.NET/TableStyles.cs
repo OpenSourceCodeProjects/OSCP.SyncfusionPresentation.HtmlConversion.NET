@@ -13,10 +13,23 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         internal Color Color;
         internal int Width;
         internal LineStyle Style;
+
         internal string ToCss()
         {
             string lineStyle = "solid";
             return $"{this.Width}px {lineStyle} {this.Color.ToCss()}";
+        }
+
+        internal static TableLineStyle Empty
+        {
+            get
+            {
+                return new TableLineStyle
+                {
+                    Color = Color.Empty,
+                    Width = 0
+                };
+            }
         }
     }
 

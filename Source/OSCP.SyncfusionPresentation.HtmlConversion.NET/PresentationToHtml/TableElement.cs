@@ -51,107 +51,137 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
             // Create a table body element.
             this.TBody = this.AppendElement<HtmlElement>("tbody");
 
-            // Get from the built in table style that has been applied to the table.
-            TableStyle tableStyle;
-            TableStyles.List.TryGetValue(table.BuiltInStyle, out tableStyle);
-
-            // Apply borders to the table.
-            if (tableStyle.TableBorder.Top.Width > 0) this.Css($"border-top", tableStyle.TableBorder.Top.ToCss());
-            if (tableStyle.TableBorder.Right.Width > 0) this.Css($"border-right", tableStyle.TableBorder.Right.ToCss());
-            if (tableStyle.TableBorder.Bottom.Width > 0) this.Css($"border-bottom", tableStyle.TableBorder.Bottom.ToCss());
-            if (tableStyle.TableBorder.Left.Width > 0) this.Css($"border-left", tableStyle.TableBorder.Left.ToCss());
-
             IRow row = null;
             ICell cell = null;
-            bool isAlternateRow = false;
-            bool isAlternateCell = false;
             Color fillColor;
             string cellElementName;
+            HtmlElement rowElement = null;
+            HtmlElement cellElement = null;
 
-            // Loop over the rows in the table.
-            for (int rdx = 0; rdx < table.Rows.Count; rdx++)
+            TableStyle tableStyle;
+
+            // A built in table style has been applied to this table and is found in the table styles list.
+            if (table.BuiltInStyle != BuiltInTableStyle.None && TableStyles.List.TryGetValue(table.BuiltInStyle, out tableStyle) == true)
             {
-                row = table.Rows[rdx];
-                isAlternateRow = (rdx % 2) == 0;
+                // Apply borders to the table.
+                if (tableStyle.TableBorder.Top.Width > 0) this.Css($"border-top", tableStyle.TableBorder.Top.ToCss());
+                if (tableStyle.TableBorder.Right.Width > 0) this.Css($"border-right", tableStyle.TableBorder.Right.ToCss());
+                if (tableStyle.TableBorder.Bottom.Width > 0) this.Css($"border-bottom", tableStyle.TableBorder.Bottom.ToCss());
+                if (tableStyle.TableBorder.Left.Width > 0) this.Css($"border-left", tableStyle.TableBorder.Left.ToCss());
 
-                HtmlElement rowElement = null;
+                bool isAlternateRow = false;
+                bool isAlternateCell = false;
 
-                if (rdx == 0 && table.HasHeaderRow == true)
+                // Loop over the rows in the table.
+                for (int rdx = 0; rdx < table.Rows.Count; rdx++)
                 {
-                    this.THead = this.PrependElement<HtmlElement>("thead");
-                    rowElement = this.THead.AppendElement<HtmlElement>("tr");
-                    cellElementName = "th";
-                }
-                else
-                {
-                    rowElement = this.TBody.AppendElement<HtmlElement>("tr");
-                    cellElementName = "td";
-                }
+                    row = table.Rows[rdx];
+                    isAlternateRow = (rdx % 2) == 0;
 
-                for (int cdx = 0; cdx < row.Cells.Count; cdx++)
-                {
-                    cell = row.Cells[cdx];
-                    isAlternateCell = (cdx % 2) == 1;
-
-                    // Determine which style to get from the built in table styles.
-                    fillColor = rdx == 0 
-                        ? tableStyle.HeadingFillColor
-                        : (
-                            ((isAlternateRow == true && tableStyle.BandedRows == true) || (isAlternateCell == true && tableStyle.BandedColumns == true))
-                                ? tableStyle.BandedFillColor
-                                : tableStyle.FillColor
-                        );
-
-                    // Create a cell element.
-                    HtmlElement cellElement = rowElement.AppendElement<HtmlElement>(cellElementName);
-
-                    // Set the column and row span.
-                    if (cell.ColumnSpan > 1) cellElement.Attr("colspan", cell.ColumnSpan.ToString());
-                    if (cell.RowSpan > 1) cellElement.Attr("rowspan", cell.RowSpan.ToString());
-
-                    // Apply a background color to the cell.
-                    if (cell.Fill.FillType == FillType.Automatic)
+                    if (rdx == 0 && table.HasHeaderRow == true)
                     {
-                        cellElement.Css("background-color", fillColor.ToCss());
+                        this.THead = this.PrependElement<HtmlElement>("thead");
+                        rowElement = this.THead.AppendElement<HtmlElement>("tr");
+                        cellElementName = "th";
                     }
-                    else if (cell.Fill.FillType == FillType.Solid)
-                    {
-                        cellElement.Css("background-color", cell.Fill.SolidFill.Color.SystemColor.ToCss());
-                    }
-
-                    // Not the heading row.
-                    if (rdx == 0)
-                    {
-                        this.ApplyBorder(cellElement, "top", cell.CellBorders.BorderTop, tableStyle.HeaderBorder.Top);
-                        this.ApplyBorder(cellElement, "right", cell.CellBorders.BorderRight, tableStyle.HeaderBorder.Right);
-                        this.ApplyBorder(cellElement, "bottom", cell.CellBorders.BorderBottom, tableStyle.HeaderBorder.Bottom);
-                        this.ApplyBorder(cellElement, "left", cell.CellBorders.BorderLeft, tableStyle.HeaderBorder.Left);
-                    }
-                    // Not the heading row.
                     else
                     {
-                        this.ApplyBorder(cellElement, "top", cell.CellBorders.BorderTop, tableStyle.RowBorder.Top);
-                        this.ApplyBorder(cellElement, "right", cell.CellBorders.BorderRight, tableStyle.RowBorder.Right);
-                        this.ApplyBorder(cellElement, "bottom", cell.CellBorders.BorderBottom, tableStyle.RowBorder.Bottom);
-                        this.ApplyBorder(cellElement, "left", cell.CellBorders.BorderLeft, tableStyle.RowBorder.Left);
+                        rowElement = this.TBody.AppendElement<HtmlElement>("tr");
+                        cellElementName = "td";
                     }
 
-                    // Display the text in the cell.
-                    if (cell.TextBody != null)
+                    for (int cdx = 0; cdx < row.Cells.Count; cdx++)
                     {
-                        foreach (IParagraph paragraph in cell.TextBody.Paragraphs)
-                        {
-                            ParagraphElement paragraphElement = cellElement.AppendElement<ParagraphElement>(ParagraphElement.ELEMENT_NAME);
-                            paragraphElement.Parent = cellElement;
-                            paragraphElement.Load(paragraph, cell.TextBody);
-                        }
-                    }
+                        cell = row.Cells[cdx];
+                        isAlternateCell = (cdx % 2) == 1;
 
-                    // Update the cell element attributes.
-                    cellElement.Update();
+                        // Determine which style to get from the built in table styles.
+                        fillColor = rdx == 0
+                            ? tableStyle.HeadingFillColor
+                            : (
+                                ((isAlternateRow == true && tableStyle.BandedRows == true) || (isAlternateCell == true && tableStyle.BandedColumns == true))
+                                    ? tableStyle.BandedFillColor
+                                    : tableStyle.FillColor
+                            );
+
+                        // Create a cell element.
+                        cellElement = rowElement.AppendElement<HtmlElement>(cellElementName);
+
+                        // Set the column and row span.
+                        if (cell.ColumnSpan > 1) cellElement.Attr("colspan", cell.ColumnSpan.ToString());
+                        if (cell.RowSpan > 1) cellElement.Attr("rowspan", cell.RowSpan.ToString());
+
+                        // Apply a background color to the cell.
+                        if (cell.Fill.FillType == FillType.Automatic)
+                        {
+                            cellElement.Css("background-color", fillColor.ToCss());
+                        }
+                        else if (cell.Fill.FillType == FillType.Solid)
+                        {
+                            cellElement.Css("background-color", cell.Fill.SolidFill.Color.SystemColor.ToCss());
+                        }
+
+                        // Heading row.
+                        if (rdx == 0)
+                        {
+                            this.ApplyBorder(cellElement, "top", cell.CellBorders.BorderTop, tableStyle.HeaderBorder.Top);
+                            this.ApplyBorder(cellElement, "right", cell.CellBorders.BorderRight, tableStyle.HeaderBorder.Right);
+                            this.ApplyBorder(cellElement, "bottom", cell.CellBorders.BorderBottom, tableStyle.HeaderBorder.Bottom);
+                            this.ApplyBorder(cellElement, "left", cell.CellBorders.BorderLeft, tableStyle.HeaderBorder.Left);
+                        }
+                        // Not the heading row.
+                        else
+                        {
+                            this.ApplyBorder(cellElement, "top", cell.CellBorders.BorderTop, tableStyle.RowBorder.Top);
+                            this.ApplyBorder(cellElement, "right", cell.CellBorders.BorderRight, tableStyle.RowBorder.Right);
+                            this.ApplyBorder(cellElement, "bottom", cell.CellBorders.BorderBottom, tableStyle.RowBorder.Bottom);
+                            this.ApplyBorder(cellElement, "left", cell.CellBorders.BorderLeft, tableStyle.RowBorder.Left);
+                        }
+
+                        // Display the text in the cell.
+                        this.DisplayCellTextBody(cell, cellElement);
+
+                        // Update the cell element attributes.
+                        cellElement.Update();
+                    }
                 }
             }
+            // This table does not have a built in table style applied to it.
+            else
+            {
+                // Loop over the rows in the table.
+                for (int rdx = 0; rdx < table.Rows.Count; rdx++)
+                {
+                    row = table.Rows[rdx];
 
+                    rowElement = this.TBody.AppendElement<HtmlElement>("tr");
+                    cellElementName = "td";
+
+                    for (int cdx = 0; cdx < row.Cells.Count; cdx++)
+                    {
+                        cell = row.Cells[cdx];
+
+                        // Create a cell element.
+                        cellElement = rowElement.AppendElement<HtmlElement>(cellElementName);
+
+                        if (cell.Fill.FillType == FillType.Solid)
+                        {
+                            cellElement.Css("background-color", cell.Fill.SolidFill.Color.SystemColor.ToCss());
+                        }
+
+                        this.ApplyBorder(cellElement, "top", cell.CellBorders.BorderTop, TableLineStyle.Empty);
+                        this.ApplyBorder(cellElement, "right", cell.CellBorders.BorderRight, TableLineStyle.Empty);
+                        this.ApplyBorder(cellElement, "bottom", cell.CellBorders.BorderBottom, TableLineStyle.Empty);
+                        this.ApplyBorder(cellElement, "left", cell.CellBorders.BorderLeft, TableLineStyle.Empty);
+
+                        // Display the text in the cell.
+                        this.DisplayCellTextBody(cell, cellElement);
+
+                        // Update the cell element attributes.
+                        cellElement.Update();
+                    }
+                }
+            }
 
             // Add the colgroup for the table.
             HtmlElement colGroupElement = this.PrependElement<HtmlElement>("colgroup");
@@ -166,6 +196,24 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
             this.Update();
 
             return this;
+        }
+
+        /// <summary>
+        /// Display text in the cell.
+        /// </summary>
+        /// <param name="cell">Syncfusion.Presentation.ICell that contains the cell text to be displayed.</param>
+        /// <param name="cellElement">HTML Element to display the cell text.</param>
+        private void DisplayCellTextBody(ICell cell, HtmlElement cellElement)
+        {
+            if (cell.TextBody != null)
+            {
+                foreach (IParagraph paragraph in cell.TextBody.Paragraphs)
+                {
+                    ParagraphElement paragraphElement = cellElement.AppendElement<ParagraphElement>(ParagraphElement.ELEMENT_NAME);
+                    paragraphElement.Parent = cellElement;
+                    paragraphElement.Load(paragraph, cell.TextBody);
+                }
+            }
         }
 
         private void ApplyBorder(HtmlElement cellElement, string borderPosition, ILineFormat cellBorder, TableLineStyle defaultBorder)

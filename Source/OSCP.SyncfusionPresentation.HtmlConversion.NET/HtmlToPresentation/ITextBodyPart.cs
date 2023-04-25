@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 {
+    /// <summary>
+    /// Interface to be applied to a PartObject that is creating a Syncfusion.Presentation object that
+    /// has an ITextBody.
+    /// </summary>
     internal interface ITextBodyPart
     {
         /// <summary>
