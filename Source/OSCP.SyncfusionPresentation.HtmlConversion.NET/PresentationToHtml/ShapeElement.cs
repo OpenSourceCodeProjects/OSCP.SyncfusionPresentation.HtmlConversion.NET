@@ -17,7 +17,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         public ShapeElement(XmlNode node) : base(node)
         {
-            this.AddClass("pptx-shape");
+            this.AddClass(HtmlDocument.Settings.CssClass.Shape);
         }
 
         internal ShapeElement Load(IShape shape)

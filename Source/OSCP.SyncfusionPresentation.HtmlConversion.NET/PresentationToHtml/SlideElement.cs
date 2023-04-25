@@ -18,7 +18,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         public SlideElement(XmlNode node) : base (node) 
         {
-            this.AddClass("pptx-slide");
+            this.AddClass(HtmlDocument.Settings.CssClass.Slide);
         }
 
         internal SlideElement Load(ISlide slide)
@@ -83,9 +83,28 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                         if (imageType.Length > 0)
                         {
                             // Add the background image as a base64 string.
-                            string imageAsBase64 = $"url(data:image/{imageType};base64,{System.Convert.ToBase64String(slide.Background.Fill.PictureFill.ImageBytes)})";
-                            this.Css("background-image", imageAsBase64)
-                                .Css("background-size", $"{slide.SlideSize.Width}px {slide.SlideSize.Height}px");
+                            string imageAsBase64 = System.Convert.ToBase64String(slide.Background.Fill.PictureFill.ImageBytes);
+
+                            if (HtmlDocument.Settings.ImageData.Location == ImageDataLocation.Embedded)
+                            {
+                                this.Css("background-image", $"url(data:image/{imageType};base64,{imageAsBase64})")
+                                    .Css("background-size", $"{slide.SlideSize.Width}px {slide.SlideSize.Height}px");
+                            }
+                            else if (HtmlDocument.Settings.ImageData.Location == ImageDataLocation.Base64)
+                            {
+                                string imageId = Guid.NewGuid().ToString();
+                                this.Attr("data-image-id", imageId);
+                                HtmlDocument.Settings.ImageData.Base64Images.Add(new Base64Image
+                                {
+                                    Id = imageId,
+                                    ElementName = SlideElement.ELEMENT_NAME,
+                                    ElementCssClass = HtmlDocument.Settings.CssClass.Slide,
+                                    ImageType = imageType,
+                                    Data = imageAsBase64,
+                                    Width = slide.SlideSize.Width,
+                                    Height = slide.SlideSize.Height
+                                });
+                            }
                         }
                     }
                 }

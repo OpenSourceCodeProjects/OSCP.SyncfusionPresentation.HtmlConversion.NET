@@ -17,7 +17,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         public ParagraphElement(XmlNode node) : base(node)
         {
-            this.AddClass("pptx-paragraph");
+            this.AddClass(HtmlDocument.Settings.CssClass.Paragraph);
         }
 
         internal ParagraphElement Load(IParagraph paragraph, ITextBody textBody)

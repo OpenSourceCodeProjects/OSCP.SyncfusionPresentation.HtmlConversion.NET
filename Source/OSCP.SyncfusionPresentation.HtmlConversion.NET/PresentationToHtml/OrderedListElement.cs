@@ -14,7 +14,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         public OrderedListElement(XmlNode node) : base(node)
         {
-            this.AddClass("pptx-ordered-list");
+            this.AddClass(HtmlDocument.Settings.CssClass.OrderedList);
         }
 
         internal override ListElement Load(IParagraph paragraph)

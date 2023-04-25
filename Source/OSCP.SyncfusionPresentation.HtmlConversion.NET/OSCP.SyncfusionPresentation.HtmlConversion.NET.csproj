@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BulletCharacterConversion.cs" />
+    <Compile Include="ConverterSettings.cs" />
     <Compile Include="HtmlToPresentationConverter.cs" />
     <Compile Include="ColorExtensions.cs" />
     <Compile Include="HtmlToPresentation\AddChildNodeArgs.cs" />

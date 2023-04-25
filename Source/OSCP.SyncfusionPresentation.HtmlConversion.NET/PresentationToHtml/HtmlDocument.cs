@@ -10,19 +10,23 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 {
     internal class HtmlDocument
     {
+        internal static ConverterSettings Settings { get; set; }
+
         private XmlDocument XmlDocument { get; set; }
         private HtmlElement DocumentElement { get; set; }
         private HtmlElement SlidesElement { get; set; }
 
-        internal HtmlDocument()
+        internal HtmlDocument(ConverterSettings settings)
         {
+            HtmlDocument.Settings = settings;
+
             this.XmlDocument = new XmlDocument();
 
             this.DocumentElement = this.AddElement("div");
-            this.DocumentElement.AddClass("pptx-document").Update();
+            this.DocumentElement.AddClass(settings.CssClass.Document).Update();
 
             this.SlidesElement = this.DocumentElement.AppendElement<HtmlElement>("div");
-            this.SlidesElement.AddClass("pptx-slides").Update();
+            this.SlidesElement.AddClass(settings.CssClass.Slides).Update();
         }
 
         internal void Load(IPresentation presentation)

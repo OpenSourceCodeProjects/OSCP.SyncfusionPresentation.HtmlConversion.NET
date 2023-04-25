@@ -17,7 +17,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         public TextPartElement(XmlNode node) : base(node)
         {
-            this.AddClass("pptx-textpart");
+            this.AddClass(HtmlDocument.Settings.CssClass.TextPart);
         }
 
         internal TextPartElement Empty()

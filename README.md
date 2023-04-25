@@ -80,6 +80,7 @@ PowerPoint Features Supported
 | **Animations** | :x: | :x: |
 | **Drawing** | :x: | :x: |
 | **Comments** | :white_circle: | :white_circle: |
+| **Configuration Settings** | :large_blue_diamond: | :large_blue_diamond: |
 
 - :white_check_mark: - In current release.
 - :ballot_box_with_check: - Development complete for next release.

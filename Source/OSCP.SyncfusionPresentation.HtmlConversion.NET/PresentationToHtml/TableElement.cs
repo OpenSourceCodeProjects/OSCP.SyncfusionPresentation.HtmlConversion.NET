@@ -23,7 +23,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
         public TableElement(XmlNode node) : base(node)
         {
             // Add a CSS class to the element that identifies the presentation object.
-            this.AddClass("pptx-table");
+            this.AddClass(HtmlDocument.Settings.CssClass.Table);
 
             // Initialize a list of row elements.
             this.Rows = new List<HtmlElement>();
