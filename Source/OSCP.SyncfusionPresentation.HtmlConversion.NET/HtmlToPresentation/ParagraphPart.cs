@@ -13,12 +13,15 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
     /// </summary>
     internal class ParagraphPart : PartObject
     {
+        /// <summary>
+        /// Event for when a child node.
+        /// </summary>
         internal event AddChildNodeDelegate AddChildNode;
 
         /// <summary>
-        /// Parent ITextBodyPart object.
+        /// Parent TextBodyPart object.
         /// </summary>
-        internal ITextBodyPart TextBodyPart { get; set; }
+        internal TextBodyPart TextBodyPart { get; set; }
 
         /// <summary>
         /// Syncfusion.Presentaton.IParagraph object that is created.
@@ -29,7 +32,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
         /// Constructor.
         /// </summary>
         /// <param name="shapePart">Parent ShapePart object.</param>
-        internal ParagraphPart(ITextBodyPart textBodyPart)
+        internal ParagraphPart(TextBodyPart textBodyPart)
         {
             this.TextBodyPart = textBodyPart;
         }
@@ -78,8 +81,10 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
                     textPart.Load(childNode);
                 }
 
+                // The parent PartObject has subscribed to the AddChildNode event.
                 if (this.AddChildNode != null)
                 {
+                    // Raise the AddChildNode event.
                     this.AddChildNode(new AddChildNodeArgs { XmlNode = childNode });
                 }
             }

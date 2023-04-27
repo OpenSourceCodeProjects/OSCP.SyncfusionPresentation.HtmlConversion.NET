@@ -13,10 +13,10 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
     /// <summary>
     /// Convert an HTMLTableCellElement to a Syncfusion.Presentaton.ICell object.
     /// </summary>
-    internal class TableCellPart : PartObject, ITextBodyPart
+    internal class TableCellPart : PartObject, IPartWithTextBody
     {
         /// <summary>
-        /// Get the ITextBody object for the cell.
+        /// Get the ITextBody object.
         /// </summary>
         public ITextBody ITextBody
         {
@@ -58,7 +58,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
         /// <summary>
         /// Load the TableCellPart.
         /// </summary>
-        /// <param name="tableCellNode">XmlNode that represents the XmlNode that represents the HTMLSpanElement..</param>
+        /// <param name="tableNode">XmlNode that represents the HTMLTableCellElement.</param>
         /// <param name="row">Row for the cell.</param>
         /// <param name="col">Column for the cell.</param>
         internal void Load(XmlNode tableCellNode, int row, int col)
@@ -88,15 +88,16 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
                 this.ICell.Fill.SolidFill.Color = ColorExtensions.FromCss(backgroundColor);
             }
 
-            // Get the paragraph within the table cell.
-            XmlNode paragraphNode = this.Node.SelectSingleNode("p");
+            // Get the child div element.
+            XmlNode childNode = tableCellNode.SelectSingleNode("div");
 
-            // The table cell has a paragraph node.
-            if (paragraphNode != null)
+            // There is a child element and it has a TextBody CSS class.
+            if (childNode != null && childNode.Attributes["class"] != null && childNode.Attributes["class"].Value.IndexOf(PptxDocument.Settings.CssClass.TextBody) > -1)
             {
-                // Add the table cell content.
-                ParagraphPart paragraphPart = new ParagraphPart(this);
-                paragraphPart.Load(paragraphNode);
+                // Add a text body.
+                TextBodyPart textBodyPart = new TextBodyPart(this);
+                // Load the text body.
+                textBodyPart.Load(childNode);
             }
         }
 

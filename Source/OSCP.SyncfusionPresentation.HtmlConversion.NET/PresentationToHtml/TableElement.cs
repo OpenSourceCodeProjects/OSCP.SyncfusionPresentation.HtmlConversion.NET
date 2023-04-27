@@ -207,12 +207,19 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
         {
             if (cell.TextBody != null)
             {
-                foreach (IParagraph paragraph in cell.TextBody.Paragraphs)
-                {
-                    ParagraphElement paragraphElement = cellElement.AppendElement<ParagraphElement>(ParagraphElement.ELEMENT_NAME);
-                    paragraphElement.Parent = cellElement;
-                    paragraphElement.Load(paragraph, cell.TextBody);
-                }
+                // Create a textbody element.
+                TextBodyElement textBodyElement = cellElement.AppendElement<TextBodyElement>(TextBodyElement.ELEMENT_NAME);
+                textBodyElement.Parent = cellElement;
+
+                // Load the textbody element from the Syncfusion textbody.
+                textBodyElement.Load(cell.TextBody);
+
+                //foreach (IParagraph paragraph in cell.TextBody.Paragraphs)
+                //{
+                //    ParagraphElement paragraphElement = cellElement.AppendElement<ParagraphElement>(ParagraphElement.ELEMENT_NAME);
+                //    paragraphElement.Parent = cellElement;
+                //    paragraphElement.Load(paragraph, cell.TextBody);
+                //}
             }
         }
 

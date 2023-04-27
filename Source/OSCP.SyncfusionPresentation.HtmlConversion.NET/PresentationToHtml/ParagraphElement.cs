@@ -12,22 +12,21 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
     {
         internal const string ELEMENT_NAME = "p";
 
-        internal IParagraph Paragraph { get; set; }
-        internal HtmlElement Parent { get; set; }
+        internal IParagraph IParagraph { get; set; }
+        internal TextBodyElement Parent { get; set; }
 
         public ParagraphElement(XmlNode node) : base(node)
         {
             this.AddClass(HtmlDocument.Settings.CssClass.Paragraph);
         }
 
-        internal ParagraphElement Load(IParagraph paragraph, ITextBody textBody)
+        internal ParagraphElement Load(IParagraph paragraph)
         {
-            this.Paragraph = paragraph;
+            this.IParagraph = paragraph;
 
-            this.Css("display", "table-cell")
+            this.Css("display", "block")
                 .Css("font-family", $"'{paragraph.Font.FontName}'")
                 .Css("font-size", $"{paragraph.Font.FontSize}px")
-                .Css("vertical-align", textBody.VerticalAlignment.ToString().ToLower())
                 .Css("text-align", paragraph.HorizontalAlignment.ToString().ToLower());
 
             if (paragraph.TextParts.Count > 0)

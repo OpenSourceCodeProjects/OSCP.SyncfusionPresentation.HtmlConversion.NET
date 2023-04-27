@@ -8,7 +8,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
     {
         private HtmlDocument HtmlDocument { get; set; }
 
-        public ConverterSettings Settings { get; set; }
+        public ConverterSettings Settings { get; private set; }
 
         public PresentationToHtmlConverter()
         {

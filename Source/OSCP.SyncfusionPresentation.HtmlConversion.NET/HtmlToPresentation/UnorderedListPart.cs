@@ -8,13 +8,17 @@ using System.Xml;
 
 namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 {
+    /// <summary>
+    /// Convert an HTMLUListElement to a Syncfusion.Presentaton.IParagraph object
+    /// with a ListFormat.Type == ListType.Bulleted.
+    /// </summary>
     internal class UnorderedListPart : ListPart
     {
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="shapePart">Parent ShapePart object.</param>
-        internal UnorderedListPart(ShapePart shapePart) : base(shapePart)
+        /// <param name="textBodyPart">Parent TextBodyPart object.</param>
+        internal UnorderedListPart(TextBodyPart textBodyPart) : base(textBodyPart)
         {
         }
 
@@ -35,7 +39,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             // Loop over the child items in the list.
             foreach (XmlNode xmlNode in unorderedListNode.ChildNodes)
             {
-                paragraphPart = new ParagraphPart(this.ShapePart);
+                paragraphPart = new ParagraphPart(this.TextBodyPart);
                 paragraphPart.AddChildNode += this.OnAddChildNode;
                 paragraphPart.Load(xmlNode);
                 paragraphPart.IParagraph.ListFormat.Type = ListType.Bulleted;
@@ -45,16 +49,24 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             }
         }
 
+        /// <summary>
+        /// The paragraph is adding a child node.
+        /// </summary>
+        /// <param name="e"></param>
         internal void OnAddChildNode(AddChildNodeArgs e)
         {
+            // The child node is an ordered list.
             if (e.XmlNode.Name == "ol")
             {
-                OrderedListPart orderedListPart = new OrderedListPart(this.ShapePart);
+                // Add and load an ordered list.
+                OrderedListPart orderedListPart = new OrderedListPart(this.TextBodyPart);
                 orderedListPart.Load(e.XmlNode, this.IndentLevel + 1);
             }
+            // The child node is an unordered list.
             else if (e.XmlNode.Name == "ul")
             {
-                UnorderedListPart unorderedListPart = new UnorderedListPart(this.ShapePart);
+                // Add and load an unordered list.
+                UnorderedListPart unorderedListPart = new UnorderedListPart(this.TextBodyPart);
                 unorderedListPart.Load(e.XmlNode, this.IndentLevel + 1);
             }
         }

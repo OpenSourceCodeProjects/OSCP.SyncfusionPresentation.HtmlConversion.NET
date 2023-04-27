@@ -17,8 +17,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="shapePart">Parent ShapePart object.</param>
-        internal OrderedListPart(ShapePart shapePart) : base(shapePart)
+        /// <param name="textBodyPart">Parent TextBodyPart object.</param>
+        internal OrderedListPart(TextBodyPart textBodyPart) : base(textBodyPart)
         {
         }
 
@@ -38,7 +38,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             foreach (XmlNode xmlNode in orderedListNode.ChildNodes)
             {
                 // Add a ParagraphPart.
-                paragraphPart = new ParagraphPart(this.ShapePart);
+                paragraphPart = new ParagraphPart(this.TextBodyPart);
                 // Subscribe to the AddChildNode event.
                 paragraphPart.AddChildNode += this.OnAddChildNode;
                 // Load the paragraph.
@@ -62,14 +62,14 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             if (e.XmlNode.Name == "ol")
             {
                 // Add and load an ordered list.
-                OrderedListPart orderedListPart = new OrderedListPart(this.ShapePart);
+                OrderedListPart orderedListPart = new OrderedListPart(this.TextBodyPart);
                 orderedListPart.Load(e.XmlNode, this.IndentLevel + 1);
             }
             // The child node is an unordered list.
             else if (e.XmlNode.Name == "ul")
             {
                 // Add and load an unordered list.
-                UnorderedListPart unorderedListPart = new UnorderedListPart(this.ShapePart);
+                UnorderedListPart unorderedListPart = new UnorderedListPart(this.TextBodyPart);
                 unorderedListPart.Load(e.XmlNode, this.IndentLevel + 1);
             }
         }

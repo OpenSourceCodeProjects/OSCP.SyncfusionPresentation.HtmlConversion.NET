@@ -74,13 +74,14 @@
     <Compile Include="HtmlToPresentationConverter.cs" />
     <Compile Include="ColorExtensions.cs" />
     <Compile Include="HtmlToPresentation\AddChildNodeArgs.cs" />
+    <Compile Include="HtmlToPresentation\IPartWithTextBody.cs" />
     <Compile Include="HtmlToPresentation\ListPart.cs" />
     <Compile Include="HtmlToPresentation\OrderedListPart.cs" />
     <Compile Include="HtmlToPresentation\ParagraphPart.cs" />
     <Compile Include="HtmlToPresentation\ShapePart.cs" />
     <Compile Include="HtmlToPresentation\TableCellPart.cs" />
     <Compile Include="HtmlToPresentation\TablePart.cs" />
-    <Compile Include="HtmlToPresentation\ITextBodyPart.cs" />
+    <Compile Include="HtmlToPresentation\TextBodyPart.cs" />
     <Compile Include="HtmlToPresentation\TextPart.cs" />
     <Compile Include="HtmlToPresentation\UnorderedListPart.cs" />
     <Compile Include="PresentationToHtml\HtmlDocument.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="HtmlToPresentation\SlidePart.cs" />
     <Compile Include="HtmlToPresentation\PartObject.cs" />
     <Compile Include="PresentationToHtmlConverter.cs" />
+    <Compile Include="PresentationToHtml\TextBodyElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PresentationToHtml\ShapeElement.cs" />
     <Compile Include="PresentationToHtml\SlideElement.cs" />

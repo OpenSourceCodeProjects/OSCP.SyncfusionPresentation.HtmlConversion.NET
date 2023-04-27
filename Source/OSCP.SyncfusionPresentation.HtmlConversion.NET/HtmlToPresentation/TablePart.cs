@@ -9,24 +9,59 @@ using System.Xml;
 
 namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 {
+    /// <summary>
+    /// Convert an HTMLTableElement to a Syncfusion.Presentaton.ITable object.
+    /// </summary>
     internal class TablePart : PartObject
     {
+        /// <summary>
+        /// Parent SlidePart object.
+        /// </summary>
         internal SlidePart SlidePart { set; get; }
+
+        /// <summary>
+        /// Syncfusion.Presentaton.ITable object that is created.
+        /// </summary>
         internal ITable ITable { get; set; }
+
+        /// <summary>
+        /// Left position for the shape.
+        /// </summary>
         internal double Left { get; private set; }
+
+        /// <summary>
+        /// Top position for the shape.
+        /// </summary>
         internal double Top { get; private set; }
+
+        /// <summary>
+        /// Width of the shape.
+        /// </summary>
         internal double Width { get; private set; }
+
+        /// <summary>
+        /// Height of the shape.
+        /// </summary>
         internal double Height { get; private set; }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="slidePart">Parent SlidePart.</param>
         internal TablePart(SlidePart slidePart)
         {
             this.SlidePart = slidePart;
         }
 
+        /// <summary>
+        /// Load the TablePart.
+        /// </summary>
+        /// <param name="tableNode">XmlNode that represents the HTMLTableElement.</param>
         internal virtual void Load(XmlNode tableNode)
         {
             this.Node = tableNode;
 
+            // Get the position of table.
             this.Left = double.Parse(Regex.Match(this.Css("left"), @"[\.0-9]*").Value);
             this.Top = double.Parse(Regex.Match(this.Css("top"), @"[\.0-9]*").Value);
             this.Width = double.Parse(Regex.Match(this.Css("width"), @"[\.0-9]*").Value);

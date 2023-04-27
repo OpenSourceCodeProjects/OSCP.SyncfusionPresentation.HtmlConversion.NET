@@ -12,20 +12,24 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
     /// </summary>
     internal class ListPart : PartObject
     {
+        /// <summary>
+        /// Indent level.
+        /// </summary>
         internal int IndentLevel { get; set; }
 
         /// <summary>
-        /// Parent ShapePart object.
+        /// Parent TextBodyPart object.
         /// </summary>
-        internal ShapePart ShapePart { get; set; }
+        internal TextBodyPart TextBodyPart { get; set; }
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="shapePart">Parent ShapePart object.</param>
-        internal ListPart(ShapePart shapePart)
+        /// <param name="textBodyPart">Parent TextBodyPart object.</param>
+        internal ListPart(TextBodyPart textBodyPart)
         {
-            this.ShapePart = shapePart;
+            // Store the parent text body part.
+            this.TextBodyPart = textBodyPart;
         }
     }
 }

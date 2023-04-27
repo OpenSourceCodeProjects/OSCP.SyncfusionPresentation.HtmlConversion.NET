@@ -11,7 +11,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
     internal abstract class ListElement : HtmlElement
     {
         internal IParagraph Paragraph { get; set; }
-        internal ShapeElement Parent { get; set; }
+        internal TextBodyElement Parent { get; set; }
         protected List<HtmlElement> ListItems { get; set; }
 
         public ListElement(XmlNode node) : base(node)
@@ -23,10 +23,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
         {
             this.Paragraph = paragraph;
 
-            this.Css("display", "table-cell")
+            this.Css("display", "block")
                 .Css("font-family", $"'{paragraph.Font.FontName}'")
                 .Css("font-size", $"{paragraph.Font.FontSize}px")
-                .Css("vertical-align", this.Parent.Shape.TextBody.VerticalAlignment.ToString().ToLower())
                 .Css("text-align", paragraph.HorizontalAlignment.ToString().ToLower());
 
             this.Update();

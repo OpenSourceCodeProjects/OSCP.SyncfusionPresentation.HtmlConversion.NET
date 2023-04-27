@@ -48,7 +48,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             this.ApplyBackground();
 
             // Get the shapes.
-            XmlNodeList shapes = this.Node.SelectNodes("div[contains(@class, 'pptx-shape')]");
+            XmlNodeList shapes = this.Node.SelectNodes($"div[contains(@class, '{PptxDocument.Settings.CssClass.Shape}')]");
 
             // Loop over all the shapes in the slide.
             foreach (XmlNode shapeNode in shapes)
@@ -59,7 +59,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             }
 
             // Get the tables.
-            XmlNodeList tables = this.Node.SelectNodes("table[contains(@class, 'pptx-table')]");
+            XmlNodeList tables = this.Node.SelectNodes($"table[contains(@class, '{PptxDocument.Settings.CssClass.Table}')]");
 
             // Loop over all the tables in the slode.
             foreach (XmlNode tableNode in tables)
@@ -106,6 +106,27 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
                     byte[] imageBytes = Convert.FromBase64String(base64ImageString).ToArray();
                     background.Fill.FillType = FillType.Picture;
                     background.Fill.PictureFill.ImageBytes = imageBytes;
+                }
+            }
+            else
+            {
+                // Check for an image id.
+                string imageId = this.Attr("data-image-id");
+
+                // There is an image id and there is a list of base 64 images.
+                if (imageId.Length > 0 && PptxDocument.Base64Images != null)
+                {
+                    // Search for the base 64 image.
+                    Base64Image base64Image = PptxDocument.Base64Images.Where(item => item.Id == imageId).FirstOrDefault();
+
+                    // The base 64 image was found.
+                    if (base64Image != null) 
+                    {
+                        // Get the base64 string and apply the background image.
+                        byte[] imageBytes = Convert.FromBase64String(base64Image.Data).ToArray();
+                        background.Fill.FillType = FillType.Picture;
+                        background.Fill.PictureFill.ImageBytes = imageBytes;
+                    }
                 }
             }
         }

@@ -13,6 +13,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         public string Slide { get; set; }
         public string Shape { get; set; }
         public string Table { get; set; }
+        public string TextBody { get; set; }
         public string Paragraph { get; set; }
         public string OrderedList { get; set; }
         public string UnorderedList { get; set; }
@@ -25,6 +26,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             this.Slide = "pptx-slide";
             this.Shape = "pptx-shape";
             this.Table = "pptx-table";
+            this.TextBody = "pptx-textbody";
             this.Paragraph = "pptx-paragraph";
             this.OrderedList = "pptx-ordered-list";
             this.UnorderedList = "pptx-unordered-list";
