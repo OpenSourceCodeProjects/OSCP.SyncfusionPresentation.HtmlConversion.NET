@@ -16,6 +16,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         public PictureElement(XmlNode node) : base(node)
         {
+            // Add the css class for a picture.
+            this.AddClass(HtmlDocument.Settings.CssClass.Picture);
         }
 
         internal PictureElement Load(IPicture picture)
@@ -30,8 +32,29 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
             // Add the background image as a base64 string.
             string imageAsBase64 = System.Convert.ToBase64String(picture.ImageData);
 
-            this.Css("background-image", $"url(data:image/{imageType};base64,{imageAsBase64})")
-                .Css("background-size", $"{picture.Width}px {picture.Height}px");
+            if (HtmlDocument.Settings.ImageData.Location == ImageDataLocation.Embedded)
+            {
+                this.Css("background-image", $"url(data:image/{imageType};base64,{imageAsBase64})")
+                    .Css("background-size", $"{picture.Width}px {picture.Height}px");
+            }
+            else if (HtmlDocument.Settings.ImageData.Location == ImageDataLocation.Base64)
+            {
+                this.Css("display", "initial");
+
+                string imageId = Guid.NewGuid().ToString();
+                this.Attr("data-image-id", imageId);
+
+                HtmlDocument.Settings.ImageData.Base64Images.Add(new Base64Image
+                {
+                    Id = imageId,
+                    ElementName = PictureElement.ELEMENT_NAME,
+                    ElementCssClass = HtmlDocument.Settings.CssClass.Picture,
+                    ImageType = imageType,
+                    Data = imageAsBase64,
+                    Width = picture.Width,
+                    Height = picture.Height
+                });
+            }
 
             // Update the underlying XmlNode with the styles and classes.
             this.Update();

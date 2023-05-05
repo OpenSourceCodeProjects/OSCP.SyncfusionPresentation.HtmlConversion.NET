@@ -32,6 +32,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
             // The shape is an image.
             if (shape.GetType().Name == "Picture")
             {
+                // Add the css class for a picture.
+                this.AddClass(HtmlDocument.Settings.CssClass.Picture);
+
                 // Cast the shape as a picture to get the image information.
                 IPicture picture = shape as IPicture;
 
@@ -41,11 +44,32 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                 // Get the image as a base64 string.
                 string imageAsBase64 = System.Convert.ToBase64String(picture.ImageData);
 
-                // Set the background of this shape with the image.
-                this.Css("display", "initial")
-                    .Css("background-image", $"url(data:image/{imageType};base64,{imageAsBase64})")
-                    .Css("background-size", $"{picture.Width}px {picture.Height}px")
-                    .Css("background-repeat", "no-repeat");
+                if (HtmlDocument.Settings.ImageData.Location == ImageDataLocation.Embedded)
+                {
+                    // Set the background of this shape with the image.
+                    this.Css("display", "initial")
+                        .Css("background-image", $"url(data:image/{imageType};base64,{imageAsBase64})")
+                        .Css("background-size", $"{picture.Width}px {picture.Height}px")
+                        .Css("background-repeat", "no-repeat");
+                }
+                else if (HtmlDocument.Settings.ImageData.Location == ImageDataLocation.Base64)
+                {
+                    this.Css("display", "initial");
+
+                    string imageId = Guid.NewGuid().ToString();
+                    this.Attr("data-image-id", imageId);
+
+                    HtmlDocument.Settings.ImageData.Base64Images.Add(new Base64Image
+                    {
+                        Id = imageId,
+                        ElementName = AutoShapeElement.ELEMENT_NAME,
+                        ElementCssClass = this.CssClassSettings,
+                        ImageType = imageType,
+                        Data = imageAsBase64,
+                        Width = picture.Width,
+                        Height = picture.Height
+                    });
+                }
             }
             else if (this.Shape.TextBody != null)
             {
