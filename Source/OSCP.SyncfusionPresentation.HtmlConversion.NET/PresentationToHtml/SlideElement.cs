@@ -37,12 +37,12 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
             {
                 if (shape.SlideItemType == SlideItemType.Placeholder)
                 {
-                    // Create a shape element.
-                    ShapeElement shapeElement = this.AppendElement<ShapeElement>(ShapeElement.ELEMENT_NAME);
-                    shapeElement.Parent = this;
+                    // Create a placeholder element.
+                    PlaceholderElement placeholderElement = this.AppendElement<PlaceholderElement>(AutoShapeElement.ELEMENT_NAME);
+                    placeholderElement.Parent = this;
 
-                    // Load the shape element from the Syncfusion shape.
-                    shapeElement.Load(shape);
+                    // Load the placeholder element from the Syncfusion shape.
+                    placeholderElement.Load(shape);
                 }
                 else if (shape.SlideItemType == SlideItemType.Table)
                 {
@@ -52,6 +52,24 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
                     // Load the table element from the Syncfusion table.
                     tableElement.Load(shape as ITable);
+                }
+                else if (shape.SlideItemType == SlideItemType.Picture)
+                {
+                    // Create a picture element.
+                    PictureElement pictureElement = this.AppendElement<PictureElement>(PictureElement.ELEMENT_NAME);
+                    pictureElement.Parent = this;
+
+                    // Load the picture element from the Syncfusion picture.
+                    pictureElement.Load(shape as IPicture);
+                }
+                else if (shape.SlideItemType == SlideItemType.AutoShape)
+                {
+                    // Create an autoshape element.
+                    AutoShapeElement autoshapeElement = this.AppendElement<AutoShapeElement>(AutoShapeElement.ELEMENT_NAME);
+                    autoshapeElement.Parent = this;
+
+                    // Load the autoshape element from the Syncfusion shape.
+                    autoshapeElement.Load(shape);
                 }
             }
 

@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 {
-    internal class TableElement : HtmlElement
+    internal class TableElement : SlideItemElement
     {
         internal const string ELEMENT_NAME = "table";
 
@@ -38,14 +38,11 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
         {
             this.Table = table;
 
+            // Position the element on the slide.
+            this.PositionElement(table);
+
             // Set the attributes on the table element.
-            this.Css("position", "absolute")
-                .Css("display", "table")
-                .Css("top", $"{table.Top}px")
-                .Css("left", $"{table.Left}px")
-                .Css("height", $"{table.Height}px")
-                .Css("width", $"{table.Width}px")
-                .Css("border-spacing", "0px")
+            this.Css("border-spacing", "0px")
                 .Attr("data-builtin-style", table.BuiltInStyle.ToString());
 
             // Create a table body element.

@@ -48,7 +48,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             this.ApplyBackground();
 
             // Get the shapes.
-            XmlNodeList shapes = this.Node.SelectNodes($"div[contains(@class, '{PptxDocument.Settings.CssClass.Shape}')]");
+            XmlNodeList shapes = this.Node.SelectNodes($"div[contains(@class, '{PptxDocument.Settings.CssClass.Placeholder}')]");
 
             // Loop over all the shapes in the slide.
             foreach (XmlNode shapeNode in shapes)

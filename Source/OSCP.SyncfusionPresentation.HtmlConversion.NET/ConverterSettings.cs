@@ -11,7 +11,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         public string Document { get; set; }
         public string Slides { get; set; }
         public string Slide { get; set; }
-        public string Shape { get; set; }
+        public string AutoShape { get; set; }
+        public string Placeholder { get; set; }
+        public string Picture { get; set; }
         public string Table { get; set; }
         public string TextBody { get; set; }
         public string Paragraph { get; set; }
@@ -24,7 +26,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             this.Document = "pptx-document";
             this.Slides = "pptx-slides";
             this.Slide = "pptx-slide";
-            this.Shape = "pptx-shape";
+            this.AutoShape = "pptx-autoshape";
+            this.Placeholder = "pptx-placeholder";
+            this.Picture = "pptx-picture";
             this.Table = "pptx-table";
             this.TextBody = "pptx-textbody";
             this.Paragraph = "pptx-paragraph";

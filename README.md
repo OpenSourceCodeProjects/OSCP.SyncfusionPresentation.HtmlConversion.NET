@@ -52,17 +52,23 @@ PowerPoint Features Supported
 | Font Size | :ballot_box_with_check: | :ballot_box_with_check: |
 | Font Color | :ballot_box_with_check: | :ballot_box_with_check: |
 | **Ordered List** |
-| 1. 2. 3. | :ballot_box_with_check: | :large_blue_diamond: |
+| 1. 2. 3. | :ballot_box_with_check: | :ballot_box_with_check: |
 | 1) 2) 3) | :white_circle: | :white_circle: |
-| I. II. III. | :ballot_box_with_check: | :large_blue_diamond: |
-| i. ii. iii. | :ballot_box_with_check: | :large_blue_diamond: |
-| A. B. C. | :ballot_box_with_check: | :large_blue_diamond: |
-| a. b. c. | :ballot_box_with_check: | :large_blue_diamond: |
+| I. II. III. | :ballot_box_with_check: | :ballot_box_with_check: |
+| i. ii. iii. | :ballot_box_with_check: | :ballot_box_with_check: |
+| A. B. C. | :ballot_box_with_check: | :ballot_box_with_check: |
+| a. b. c. | :ballot_box_with_check: | :ballot_box_with_check: |
 | a) b) c) | :white_circle: | :white_circle: |
 | **Unordered List** |
 | Default Bulleted List Options | :ballot_box_with_check: | :ballot_box_with_check: |
 | Custom Bulleted List Symbols | :white_circle: | :white_circle: |
-| **Pictures** | :large_blue_diamond: | :large_blue_diamond: |
+| **Images** | | |
+| Embedded Base64 String | :ballot_box_with_check: | :ballot_box_with_check: |
+| External CSS Base64 String | :ballot_box_with_check: | :ballot_box_with_check: |
+| External Files | :large_blue_diamond: | :large_blue_diamond: |
+| **Media** | | |
+| Audio | :white_circle: | :white_circle: |
+| Video | :white_circle: | :white_circle: |
 | **Tables** | | |
 | Header Row | :ballot_box_with_check: | :ballot_box_with_check: |
 | Banded Rows | :ballot_box_with_check: | :large_blue_diamond: |
@@ -75,17 +81,15 @@ PowerPoint Features Supported
 | Built-in Styles | :ballot_box_with_check: | :ballot_box_with_check: |
 | **Effects** | :white_circle: | :white_circle: |
 | **Charts** | :white_circle: | :white_circle: |
-| **Master Slides** | :large_blue_diamond: | :x: |
-| **Transitions** | :x: | :x: |
-| **Animations** | :x: | :x: |
+| **Master Slides** | :large_blue_diamond: | :white_circle: |
+| **Transitions** | :white_circle: | :white_circle: |
+| **Animations** | :white_circle: | :white_circle: |
 | **Drawing** | :x: | :x: |
 | **Comments** | :white_circle: | :white_circle: |
+| **Notes** | :white_circle: | :white_circle: |
 | **Configuration Settings** | | |
-| Element CSS Classes | :ballot_box_with_check: | :ballot_box_with_check: |
-| **Images** | | |
-| Embedded Base64 String | :ballot_box_with_check: | :ballot_box_with_check: |
-| External CSS Base64 String | :ballot_box_with_check: | :ballot_box_with_check: |
-| External Files | :large_blue_diamond: | :large_blue_diamond: |
+| Element CSS Classes | :ballot_box_with_check: | :x: |
+| Element Additional Attributes | :large_blue_diamond: | :x: |
 
 - :white_check_mark: - In current release.
 - :ballot_box_with_check: - Development complete for next release.

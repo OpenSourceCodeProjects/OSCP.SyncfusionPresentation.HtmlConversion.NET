@@ -67,6 +67,20 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         internal HtmlElement Css(string style, string value) 
         {
+            bool found = false;
+
+            // Check whether the style exists already.
+            for (int idx = 0; idx < this.Styles.Count && found == false; idx++)
+            {
+                // The style exists.
+                if ((found = this.Styles[idx].Key == style) == true)
+                {
+                    // Remove the style.
+                    this.Styles.RemoveAt(idx);
+                }
+            }
+
+            // Add the style.
             this.Styles.Add(new KeyValuePair<string, string>(style, value));
 
             return this;
