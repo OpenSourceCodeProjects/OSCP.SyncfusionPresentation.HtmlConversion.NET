@@ -44,6 +44,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
             this.Css("list-style-type", listStyleType);
 
+            // Apply any additional attributes provided by the end user.
+            this.ApplyAttributes(HtmlDocument.Settings.ElementAttributes.OrderedList);
+
             return base.Load(paragraph);
         }
     }

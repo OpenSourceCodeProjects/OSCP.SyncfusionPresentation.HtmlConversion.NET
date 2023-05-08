@@ -73,6 +73,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                 }
             }
 
+            // Apply any additional attributes provided by the end user.
+            this.ApplyAttributes(HtmlDocument.Settings.ElementAttributes.Slide);
+
             // Update the underlying XmlNode with the styles and classes.
             this.Update();
 

@@ -189,6 +189,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                 colGroupElement.AppendElement<HtmlElement>("col");
             }
 
+            // Apply any additional attributes provided by the end user.
+            this.ApplyAttributes(HtmlDocument.Settings.ElementAttributes.Table);
+
             // Update the table element attributes.
             this.Update();
 

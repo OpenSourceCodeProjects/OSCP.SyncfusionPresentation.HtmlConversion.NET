@@ -89,7 +89,7 @@ PowerPoint Features Supported
 | **Notes** | :white_circle: | :white_circle: |
 | **Configuration Settings** | | |
 | Element CSS Classes | :ballot_box_with_check: | :x: |
-| Element Additional Attributes | :large_blue_diamond: | :x: |
+| Element Additional Attributes | :ballot_box_with_check: | :x: |
 
 - :white_check_mark: - In current release.
 - :ballot_box_with_check: - Development complete for next release.

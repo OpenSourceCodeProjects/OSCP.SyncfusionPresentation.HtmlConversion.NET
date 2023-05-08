@@ -14,10 +14,13 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         internal IShape Shape { get; set; }
         protected string CssClassSettings { get; set; }
+        protected Dictionary<string, string> ElementAttributes { get; set; }
 
         public AutoShapeElement(XmlNode node) : base(node)
         {
             this.CssClassSettings = HtmlDocument.Settings.CssClass.AutoShape;
+
+            this.ElementAttributes = HtmlDocument.Settings.ElementAttributes.AutoShape;
         }
 
         internal AutoShapeElement Load(IShape shape)
@@ -80,6 +83,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                 // Load the textbody element from the Syncfusion textbody.
                 textBodyElement.Load(this.Shape.TextBody);
             }
+
+            // Apply any additional attributes provided by the end user.
+            this.ApplyAttributes(this.ElementAttributes);
 
             this.Update();
 

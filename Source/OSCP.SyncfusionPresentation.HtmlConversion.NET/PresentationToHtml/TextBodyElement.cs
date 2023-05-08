@@ -125,6 +125,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                 }
             }
 
+            // Apply any additional attributes provided by the end user.
+            this.ApplyAttributes(HtmlDocument.Settings.ElementAttributes.TextBody);
+
             this.Update();
 
             return this;

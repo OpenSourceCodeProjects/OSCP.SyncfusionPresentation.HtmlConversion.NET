@@ -116,6 +116,14 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
             return this;
         }
 
+        protected void ApplyAttributes(Dictionary<string, string> attributes)
+        {
+            foreach (string attributeName in attributes.Keys)
+            {
+                this.Node.GetAttribute(attributeName).Value = attributes[attributeName];
+            }
+        }
+
         private void UpdateClassAttribute()
         {
             XmlAttribute classAttribute = this.Node.GetAttribute("class");

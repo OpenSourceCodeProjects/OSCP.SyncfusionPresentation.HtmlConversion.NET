@@ -29,14 +29,23 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
             string imageType = picture.ImageFormat.ToString().ToLower();
 
-            // Add the background image as a base64 string.
+            // Convert the image to a base64 string.
             string imageAsBase64 = System.Convert.ToBase64String(picture.ImageData);
 
+            // Images are to be embedded in the HTML.
             if (HtmlDocument.Settings.ImageData.Location == ImageDataLocation.Embedded)
             {
+                // Set the image as a background image for the element.
                 this.Css("background-image", $"url(data:image/{imageType};base64,{imageAsBase64})")
                     .Css("background-size", $"{picture.Width}px {picture.Height}px");
             }
+            // Images are to be stored as external image strings and referenced by the element
+            // using a data-image-id attribute. For example, in a CSS file using the following
+            // CSS:
+            // img[data-image-id="image id here..."] {
+            //      background-image: ...;
+            //      backgound-size: ...;
+            // }.
             else if (HtmlDocument.Settings.ImageData.Location == ImageDataLocation.Base64)
             {
                 this.Css("display", "initial");
@@ -55,6 +64,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                     Height = picture.Height
                 });
             }
+
+            // Apply any additional attributes provided by the end user.
+            this.ApplyAttributes(HtmlDocument.Settings.ElementAttributes.Picture);
 
             // Update the underlying XmlNode with the styles and classes.
             this.Update();

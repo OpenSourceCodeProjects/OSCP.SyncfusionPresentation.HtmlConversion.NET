@@ -43,6 +43,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                 textPartElement.Empty();
             }
 
+            // Apply any additional attributes provided by the end user.
+            this.ApplyAttributes(HtmlDocument.Settings.ElementAttributes.Paragraph);
+
             this.Update();
 
             return this;

@@ -12,6 +12,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
         public PlaceholderElement(XmlNode node) : base(node)
         {
             this.CssClassSettings = HtmlDocument.Settings.CssClass.Placeholder;
+
+            this.ElementAttributes = HtmlDocument.Settings.ElementAttributes.Placeholder;
         }
     }
 }

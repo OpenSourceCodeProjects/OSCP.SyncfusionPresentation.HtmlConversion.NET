@@ -26,6 +26,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
                     paragraph.ListFormat.BulletCharacter)
             );
 
+            // Apply any additional attributes provided by the end user.
+            this.ApplyAttributes(HtmlDocument.Settings.ElementAttributes.UnorderedList);
+
             return base.Load(paragraph);
         }
     }
