@@ -47,26 +47,36 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             // Apply a background.
             this.ApplyBackground();
 
-            // Get the shapes.
-            XmlNodeList shapes = this.Node.SelectNodes($"div[contains(@class, '{PptxDocument.Settings.CssClass.Placeholder}')]");
+            // Get the slide items.
+            //XmlNodeList slideItems = this.Node.SelectNodes($"[contains(@class, '{PptxDocument.Settings.CssClass.SlideItem}')]");
 
-            // Loop over all the shapes in the slide.
-            foreach (XmlNode shapeNode in shapes)
+            // Loop over all the slide items in the slide.
+            foreach (XmlNode slideItemNode in this.Node.ChildNodes)
             {
-                // Create and load a shape.
-                ShapePart shapePart = new ShapePart(this);
-                shapePart.Load(shapeNode);
-            }
-
-            // Get the tables.
-            XmlNodeList tables = this.Node.SelectNodes($"table[contains(@class, '{PptxDocument.Settings.CssClass.Table}')]");
-
-            // Loop over all the tables in the slode.
-            foreach (XmlNode tableNode in tables)
-            {
-                // Create and load a table.
-                TablePart tablePart = new TablePart(this);
-                tablePart.Load(tableNode);
+                if (slideItemNode.HasClass(PptxDocument.Settings.CssClass.Placeholder) == true)
+                {
+                    // Create and load a placeholder.
+                    PlaceholderPart slideItemPart = new PlaceholderPart(this);
+                    slideItemPart.Load(slideItemNode);
+                }
+                else if (slideItemNode.HasClass(PptxDocument.Settings.CssClass.Table) == true)
+                {
+                    // Create and load a table.
+                    TablePart slideItemPart = new TablePart(this);
+                    slideItemPart.Load(slideItemNode);
+                }
+                else if (slideItemNode.HasClass(PptxDocument.Settings.CssClass.Picture) == true)
+                {
+                    // Create and load a picture.
+                    PicturePart picturePart = new PicturePart(this);
+                    picturePart.Load(slideItemNode);
+                }
+                else if (slideItemNode.HasClass(PptxDocument.Settings.CssClass.AutoShape) == true)
+                {
+                    // Create and load an autoshape.
+                    AutoShapePart slideItemPart = new AutoShapePart(this);
+                    slideItemPart.Load(slideItemNode);
+                }
             }
         }
 

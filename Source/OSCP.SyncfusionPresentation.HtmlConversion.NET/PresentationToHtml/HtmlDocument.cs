@@ -10,13 +10,13 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 {
     internal class HtmlDocument
     {
-        internal static ConverterSettings Settings { get; private set; }
+        internal static PresentationToHtmlConverterSettings Settings { get; private set; }
 
         private XmlDocument XmlDocument { get; set; }
         private HtmlElement DocumentElement { get; set; }
         private HtmlElement SlidesElement { get; set; }
 
-        internal HtmlDocument(ConverterSettings settings)
+        internal HtmlDocument(PresentationToHtmlConverterSettings settings)
         {
             HtmlDocument.Settings = settings;
 

@@ -12,11 +12,11 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
     {
         private PptxDocument PptxDocument { get; set; }
 
-        public ConverterSettings Settings { get; private set; }
+        public HtmlToPresentationConverterSettings Settings { get; private set; }
 
         public HtmlToPresentationConverter()
         {
-            this.Settings = new ConverterSettings();
+            this.Settings = new HtmlToPresentationConverterSettings();
         }
 
         /// <summary>

@@ -16,26 +16,20 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
         /// <summary>
         /// Parent PartObject with a Syncfusion.Presentaton.IITextBody.
         /// </summary>
-        internal IPartWithTextBody PartWithTextBody { set; get; }
+        internal ITextBody ITextBody { get; set; }
 
         /// <summary>
-        /// Get the ITextBody object.
+        /// Parent PartObject.
         /// </summary>
-        internal ITextBody ITextBody 
-        { 
-            get
-            {
-                return this.PartWithTextBody.ITextBody;
-            }
-        }
+        internal PartObject Parent { set; get; }
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="partWithTextBody">Parent PartObject with a Syncfusion.Presentaton.IITextBody.</param>
-        internal TextBodyPart(IPartWithTextBody partWithTextBody)
+        /// <param name="textBody">Parent PartObject with a Syncfusion.Presentaton.IITextBody.</param>
+        internal TextBodyPart(ITextBody textBody)
         {
-            this.PartWithTextBody = partWithTextBody;
+            this.ITextBody = textBody;
         }
 
         /// <summary>
@@ -48,7 +42,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 
             string verticalAlign = this.Css("vertical-align");
 
-            this.PartWithTextBody.ITextBody.VerticalAlignment = verticalAlign == "bottom"
+            this.ITextBody.VerticalAlignment = verticalAlign == "bottom"
                 ? VerticalAlignmentType.Bottom
                 : (
                     verticalAlign == "middle"

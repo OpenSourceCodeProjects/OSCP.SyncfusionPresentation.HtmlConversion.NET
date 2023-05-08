@@ -11,6 +11,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         public string Document { get; set; }
         public string Slides { get; set; }
         public string Slide { get; set; }
+        public string SlideItem { get; set; }
         public string AutoShape { get; set; }
         public string Placeholder { get; set; }
         public string Picture { get; set; }
@@ -26,6 +27,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             this.Document = "pptx-document";
             this.Slides = "pptx-slides";
             this.Slide = "pptx-slide";
+            this.SlideItem = "pptx-slide-item";
             this.AutoShape = "pptx-autoshape";
             this.Placeholder = "pptx-placeholder";
             this.Picture = "pptx-picture";
@@ -35,6 +37,40 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
             this.OrderedList = "pptx-ordered-list";
             this.UnorderedList = "pptx-unordered-list";
             this.TextPart = "pptx-textpart";
+        }
+    }
+
+    public class ElementAttributes
+    {
+        public Dictionary<string, string> Document { get; set; }
+        public Dictionary<string, string> Slides { get; set; }
+        public Dictionary<string, string> Slide { get; set; }
+        public Dictionary<string, string> SlideItem { get; set; }
+        public Dictionary<string, string> AutoShape { get; set; }
+        public Dictionary<string, string> Placeholder { get; set; }
+        public Dictionary<string, string> Picture { get; set; }
+        public Dictionary<string, string> Table { get; set; }
+        public Dictionary<string, string> TextBody { get; set; }
+        public Dictionary<string, string> Paragraph { get; set; }
+        public Dictionary<string, string> OrderedList { get; set; }
+        public Dictionary<string, string> UnorderedList { get; set; }
+        public Dictionary<string, string> TextPart { get; set; }
+
+        internal ElementAttributes()
+        {
+            this.Document = new Dictionary<string, string>();
+            this.Slides = new Dictionary<string, string>();
+            this.Slide = new Dictionary<string, string>();
+            this.SlideItem = new Dictionary<string, string>();
+            this.AutoShape = new Dictionary<string, string>();
+            this.Placeholder = new Dictionary<string, string>();
+            this.Picture = new Dictionary<string, string>();
+            this.Table = new Dictionary<string, string>();
+            this.TextBody = new Dictionary<string, string>();
+            this.Paragraph = new Dictionary<string, string>();
+            this.OrderedList = new Dictionary<string, string>();
+            this.UnorderedList = new Dictionary<string, string>();
+            this.TextPart = new Dictionary<string, string>();
         }
     }
 
@@ -68,13 +104,28 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         }
     }
 
-    public class ConverterSettings
+    public class PresentationToHtmlConverterSettings
+    {
+        public CssClassSettings CssClass { get; set; }
+        public ElementAttributes ElementAttributes { get; set; }
+
+        internal ImageDataSettings ImageData { get; set; }
+
+        internal PresentationToHtmlConverterSettings()
+        {
+            this.CssClass = new CssClassSettings();
+            this.ElementAttributes = new ElementAttributes();
+            this.ImageData = new ImageDataSettings();
+        }
+    }
+
+    public class HtmlToPresentationConverterSettings
     {
         public CssClassSettings CssClass { get; set; }
 
         internal ImageDataSettings ImageData { get; set; }
 
-        internal ConverterSettings()
+        internal HtmlToPresentationConverterSettings()
         {
             this.CssClass = new CssClassSettings();
             this.ImageData = new ImageDataSettings();

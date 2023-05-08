@@ -88,7 +88,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         internal HtmlElement Attr(string name, string value)
         {
-            this.GetAttribute(name).Value = value;
+            this.Node.GetAttribute(name).Value = value;
 
             return this;
         }
@@ -116,21 +116,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
             return this;
         }
 
-        private XmlAttribute GetAttribute(string name) 
-        {
-            XmlAttribute attribute;
-
-            if ((attribute = this.Node.Attributes[name]) == null)
-            {
-                attribute = this.Node.OwnerDocument.CreateAttribute(name);
-                this.Node.Attributes.Append(attribute);
-            }
-            return attribute;
-        }
-
         private void UpdateClassAttribute()
         {
-            XmlAttribute classAttribute = this.GetAttribute("class");
+            XmlAttribute classAttribute = this.Node.GetAttribute("class");
 
             string classes = string.Empty;
 
@@ -145,7 +133,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         private void UpdateStyleAttribute()
         {
-            XmlAttribute styleAttribute = this.GetAttribute("style");
+            XmlAttribute styleAttribute = this.Node.GetAttribute("style");
 
             string styles = string.Empty;
 

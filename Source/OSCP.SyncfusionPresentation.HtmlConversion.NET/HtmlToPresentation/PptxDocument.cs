@@ -17,7 +17,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
         /// <summary>
         /// Settings for the conversion of HTML to a Syncfusion.Presentaton.IPresentation object.
         /// </summary>
-        internal static ConverterSettings Settings { get; private set; }
+        internal static HtmlToPresentationConverterSettings Settings { get; private set; }
 
         /// <summary>
         /// Syncfusion.Presentaton.IPresentation object that is created.
@@ -37,7 +37,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
         /// <summary>
         /// Constructor.
         /// </summary>
-        internal PptxDocument(ConverterSettings settings)
+        internal PptxDocument(HtmlToPresentationConverterSettings settings)
         {
             PptxDocument.Settings = settings;
 

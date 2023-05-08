@@ -14,6 +14,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
 
         public SlideItemElement(XmlNode node) : base(node)
         {
+            this.AddClass(HtmlDocument.Settings.CssClass.SlideItem);
         }
 
         internal SlideItemElement PositionElement(ISlideItem slideItem)

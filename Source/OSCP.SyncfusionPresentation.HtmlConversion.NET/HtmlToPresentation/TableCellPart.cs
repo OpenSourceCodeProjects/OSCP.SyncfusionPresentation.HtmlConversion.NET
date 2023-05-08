@@ -13,19 +13,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
     /// <summary>
     /// Convert an HTMLTableCellElement to a Syncfusion.Presentaton.ICell object.
     /// </summary>
-    internal class TableCellPart : PartObject, IPartWithTextBody
+    internal class TableCellPart : PartObject
     {
-        /// <summary>
-        /// Get the ITextBody object.
-        /// </summary>
-        public ITextBody ITextBody
-        {
-            get
-            {
-                return this.ICell.TextBody;
-            }
-        }
-
         /// <summary>
         /// Syncfusion.Presentaton.ICell object that is created.
         /// </summary>
@@ -95,7 +84,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             if (childNode != null && childNode.Attributes["class"] != null && childNode.Attributes["class"].Value.IndexOf(PptxDocument.Settings.CssClass.TextBody) > -1)
             {
                 // Add a text body.
-                TextBodyPart textBodyPart = new TextBodyPart(this);
+                TextBodyPart textBodyPart = new TextBodyPart(this.ICell.TextBody);
                 // Load the text body.
                 textBodyPart.Load(childNode);
             }

@@ -74,11 +74,14 @@
     <Compile Include="HtmlToPresentationConverter.cs" />
     <Compile Include="ColorExtensions.cs" />
     <Compile Include="HtmlToPresentation\AddChildNodeArgs.cs" />
+    <Compile Include="HtmlToPresentation\AutoShapePart.cs" />
     <Compile Include="HtmlToPresentation\IPartWithTextBody.cs" />
     <Compile Include="HtmlToPresentation\ListPart.cs" />
     <Compile Include="HtmlToPresentation\OrderedListPart.cs" />
     <Compile Include="HtmlToPresentation\ParagraphPart.cs" />
-    <Compile Include="HtmlToPresentation\ShapePart.cs" />
+    <Compile Include="HtmlToPresentation\PicturePart.cs" />
+    <Compile Include="HtmlToPresentation\PlaceholderPart.cs" />
+    <Compile Include="HtmlToPresentation\SlideItemPart.cs" />
     <Compile Include="HtmlToPresentation\TableCellPart.cs" />
     <Compile Include="HtmlToPresentation\TablePart.cs" />
     <Compile Include="HtmlToPresentation\TextBodyPart.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="TableStyles.cs" />
     <Compile Include="PresentationToHtml\TextPartElement.cs" />
     <Compile Include="PresentationToHtml\UnorderedListElement.cs" />
+    <Compile Include="XmlNodeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

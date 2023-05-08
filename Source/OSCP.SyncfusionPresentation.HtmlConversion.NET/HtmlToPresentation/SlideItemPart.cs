@@ -9,26 +9,9 @@ using System.Xml;
 
 namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
 {
-    /// <summary>
-    /// Convert an HTMLDivElement to a Syncfusion.Presentaton.IShape object.
-    /// </summary>
-    internal class ShapePart : PartObject, IPartWithTextBody
+    internal class SlideItemPart : PartObject
     {
-        /// <summary>
-        /// Get the ITextBody object.
-        /// </summary>
-        public ITextBody ITextBody
-        {
-            get
-            {
-                return this.IShape.TextBody;
-            }
-        }
-
-        /// <summary>
-        /// Parent SlidePart.
-        /// </summary>
-        internal SlidePart SlidePart { set; get; }
+        internal SlidePart Parent { get; set; }
 
         /// <summary>
         /// Syncfusion.Presentaton.IShape object.
@@ -59,9 +42,9 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
         /// Constructor.
         /// </summary>
         /// <param name="slidePart">Parent SlidePart.</param>
-        internal ShapePart(SlidePart slidePart)
+        internal SlideItemPart(SlidePart slidePart)
         {
-            this.SlidePart = slidePart;
+            this.Parent = slidePart;
         }
 
         /// <summary>
@@ -77,34 +60,6 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.HtmlToPresentation
             this.Top = double.Parse(Regex.Match(this.Css("top"), @"[\.0-9]*").Value);
             this.Width = double.Parse(Regex.Match(this.Css("width"), @"[\.0-9]*").Value);
             this.Height = double.Parse(Regex.Match(this.Css("height"), @"[\.0-9]*").Value);
-
-            // Get the child div element.
-            XmlNode childNode = shapeNode.SelectSingleNode("div");
-
-            // There is a child element and it has a TextBody CSS class.
-            if (childNode != null && childNode.Attributes["class"] != null && childNode.Attributes["class"].Value.IndexOf(PptxDocument.Settings.CssClass.TextBody) > -1)
-            {
-                // Initialize the shape as a text box.
-                this.InitIShapeAsTextBox();
-
-                // Add a text body.
-                TextBodyPart textBodyPart = new TextBodyPart(this);
-                // Load the text body.
-                textBodyPart.Load(childNode);
-            }
-        }
-
-        /// <summary>
-        /// Initialize the shape as a text box.
-        /// </summary>
-        private void InitIShapeAsTextBox()
-        {
-            // The Syncfusion.Presentation.IShape has not been created yet.
-            if (this.IShape == null)
-            {
-                // Create an instance of the Syncfusion.Presentation.IShape as a text box.
-                this.IShape = this.SlidePart.ISlide.AddTextBox(this.Left, this.Top, this.Width, this.Height);
-            }
         }
     }
 }
