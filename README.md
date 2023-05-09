@@ -81,7 +81,7 @@ PowerPoint Features Supported
 | Built-in Styles | :ballot_box_with_check: | :ballot_box_with_check: |
 | **Effects** | :white_circle: | :white_circle: |
 | **Charts** | :white_circle: | :white_circle: |
-| **Master Slides** | :large_blue_diamond: | :white_circle: |
+| **Master Slides** | :ballot_box_with_check: | :large_blue_diamond: |
 | **Transitions** | :white_circle: | :white_circle: |
 | **Animations** | :white_circle: | :white_circle: |
 | **Drawing** | :x: | :x: |

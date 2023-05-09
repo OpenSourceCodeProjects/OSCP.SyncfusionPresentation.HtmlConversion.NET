@@ -9,6 +9,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
     public class CssClassSettings
     {
         public string Document { get; set; }
+        public string LayoutSlides { get; set; }
+        public string LayoutSlide { get; set; }
         public string Slides { get; set; }
         public string Slide { get; set; }
         public string SlideItem { get; set; }
@@ -25,6 +27,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         internal CssClassSettings()
         {
             this.Document = "pptx-document";
+            this.LayoutSlides = "pptx-layout-slides";
+            this.LayoutSlide = "pptx-layout-slide";
             this.Slides = "pptx-slides";
             this.Slide = "pptx-slide";
             this.SlideItem = "pptx-slide-item";
@@ -43,6 +47,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
     public class ElementAttributes
     {
         public Dictionary<string, string> Document { get; set; }
+        public Dictionary<string, string> LayoutSlides { get; set; }
+        public Dictionary<string, string> LayoutSlide { get; set; }
         public Dictionary<string, string> Slides { get; set; }
         public Dictionary<string, string> Slide { get; set; }
         public Dictionary<string, string> SlideItem { get; set; }
@@ -59,6 +65,8 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET
         internal ElementAttributes()
         {
             this.Document = new Dictionary<string, string>();
+            this.LayoutSlides = new Dictionary<string, string>();
+            this.LayoutSlide = new Dictionary<string, string>();
             this.Slides = new Dictionary<string, string>();
             this.Slide = new Dictionary<string, string>();
             this.SlideItem = new Dictionary<string, string>();

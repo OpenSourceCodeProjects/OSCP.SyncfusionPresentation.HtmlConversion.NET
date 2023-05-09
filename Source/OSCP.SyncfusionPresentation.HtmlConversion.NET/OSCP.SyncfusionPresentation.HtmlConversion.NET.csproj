@@ -89,6 +89,7 @@
     <Compile Include="HtmlToPresentation\UnorderedListPart.cs" />
     <Compile Include="PresentationToHtml\HtmlDocument.cs" />
     <Compile Include="PresentationToHtml\HtmlElement.cs" />
+    <Compile Include="PresentationToHtml\LayoutSlideElement.cs" />
     <Compile Include="PresentationToHtml\ListElement.cs" />
     <Compile Include="PresentationToHtml\ParagraphElement.cs" />
     <Compile Include="HtmlToPresentation\PptxDocument.cs" />

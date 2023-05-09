@@ -14,15 +14,21 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
         internal const string ELEMENT_NAME = "div";
 
         internal HtmlElement Parent { get; set; }
-        internal ISlide Slide { get; set; }
+        internal IBaseSlide Slide { get; set; }
+        protected string CssClassSettings { get; set; }
+        protected Dictionary<string, string> ElementAttributes { get; set; }
 
         public SlideElement(XmlNode node) : base (node) 
         {
-            this.AddClass(HtmlDocument.Settings.CssClass.Slide);
+            this.CssClassSettings = HtmlDocument.Settings.CssClass.Slide;
+
+            this.ElementAttributes = HtmlDocument.Settings.ElementAttributes.Slide;
         }
 
-        internal SlideElement Load(ISlide slide)
+        internal SlideElement Load(IBaseSlide slide)
         {
+            this.AddClass(this.CssClassSettings);
+
             this.Slide = slide;
 
             this.Css("position", "relative")
@@ -74,7 +80,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
             }
 
             // Apply any additional attributes provided by the end user.
-            this.ApplyAttributes(HtmlDocument.Settings.ElementAttributes.Slide);
+            this.ApplyAttributes(this.ElementAttributes);
 
             // Update the underlying XmlNode with the styles and classes.
             this.Update();
@@ -86,7 +92,7 @@ namespace OSCP.SyncfusionPresentation.HtmlConversion.NET.PresentationToHtml
         /// Determine whether the slide has a background and if so, then apply it.
         /// </summary>
         /// <param name="slide">Syncfusion slide.</param>
-        private void ApplyBackground(ISlide slide)
+        private void ApplyBackground(IBaseSlide slide)
         {
             // The slide has a background.
             if (slide.Background.Fill.FillType != FillType.None)
